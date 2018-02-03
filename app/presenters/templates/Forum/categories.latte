@@ -1,0 +1,146 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+{block content}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Moje forum</title>
+        <style>
+            .forum.table > tbody > tr > td {
+                vertical-align: middle;
+            }
+
+            .forum .fa {
+                width: 1em;
+                text-align: center;
+            }
+
+            .forum.table th.cell-stat {
+                width: 6em;
+            }
+
+            .forum.table th.cell-stat-2x {
+                width: 14em;
+            }
+            #newpost {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <div class="page-header page-heading">
+            <h1 class="pull-left">Forum</h1>
+            <ol class="breadcrumb pull-right where-am-i">
+                <li><a href="#">Forum</a></li>
+                <li class="active">List of topics</li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+        <p class="lead">This is the right place to discuss any ideas, critics, feature requests and all the ideas regarding our website. Please follow the forum rules and always check FAQ before posting to prevent duplicate posts.</p>
+        <div class="col-md-12 center">
+        </div>
+        <table class="table forum table-striped">
+            <thead>
+            <tr>
+                <th class="cell-stat"></th>
+                <th>
+                    <h3>První kategorie</h3>
+                </th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $topics as $topic}
+                {if $topic['db']->category_id == 0}
+                    <tr>
+                        <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
+                        <td>
+                            <h4><a n:href="Forum:posts 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
+                        {if $topic['lastPost']}
+                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                        {else}
+                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
+                        {/if}
+                    </tr>
+                {/if}
+            {/foreach}
+
+            </tbody>
+        </table>
+        <table class="table forum table-striped">
+            <thead>
+            <tr>
+                <th class="cell-stat"></th>
+                <th>
+                    <h3>Druhá kategorie</h3>
+                </th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $topics as $topic}
+                {if $topic['db']->category_id == 1}
+                    <tr>
+                        <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
+                        <td>
+                            <h4><a n:href="Forum:posts 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
+                        {if $topic['lastPost']}
+                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                        {else}
+                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
+                        {/if}
+                    </tr>
+                {/if}
+            {/foreach}
+            </tbody>
+
+        </table>
+        <table class="table forum table-striped">
+            <thead>
+            <tr>
+                <th class="cell-stat"></th>
+                <th>
+                    <h3>Třetí kategorie</h3>
+                </th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $topics as $topic}
+                {if $topic['db']->category_id == 2}
+                    <tr>
+                        <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
+                        <td>
+                            <h4><a n:href="Forum:posts, 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
+                        {if $topic['lastPost']}
+                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                        {else}
+                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
+                        {/if}
+                    </tr>
+                {/if}
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </body>
+    </html>
+{/block}
+{block scripts}
+    <script src="https://files.nette.org/sandbox/jush.js"></script>
+{/block}

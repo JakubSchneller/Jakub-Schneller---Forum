@@ -1,0 +1,38 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+	<!-- A grey horizontal navbar that becomes vertical on small screens -->
+	<html>
+	<header class="navbar navbar-expand">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" n:href=Homepage:default>Moje stránka</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a n:href=Homepage:default>Home</a></li>
+					<li ><a n:href=Forum:categories>Forum</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{if $user->isLoggedIn() }
+						<li><a n:href=Profile:profile >Přihlášen jako: {$loggedin_name}</a></li>
+						<li><a n:href=Sign:out> Odhlášení</a></li>
+					{else}
+						<li><a n:href=Sign:up> Registrace</a></li>
+						<li><a n:href=Sign:in> Přihlášení</a></li>
+					{/if}
+				</ul>
+			</div>
+		</nav>
+	</header>
+	</html>
+
+{/block}
+
+{block scripts}
+	<script src="https://files.nette.org/sandbox/jush.js"></script>
+{/block}
+
+
+{block head}
+{/block}

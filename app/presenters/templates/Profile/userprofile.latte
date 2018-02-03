@@ -1,0 +1,71 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+{block content}
+
+<!DOCTYPE html>
+
+<hmtl>
+	<head>
+
+	</head>
+	<body>
+    {if $userId == $users->user_id}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-body text-left">
+							<div class="row">
+								<div class="col-md-12">
+									<div align="center">
+										<a class="" href="#">
+											<img class="media-object dp img-circle" src="../{$users->image}" style="width: 180px;height:180px;">
+										</a>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<h2 align="center">{$users->first_name} {$users->last_name}</h2><br>
+									<p>
+									<div class="col-sm-5 col-xs-6 tital" align="left">Křestní jméno:</div><div class="col-sm-7 col-xs-6" align="right">{$users->first_name}</div>
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
+
+									<div class="col-sm-5 col-xs-6 tital" align="left">Příjmení:</div><div class="col-sm-7" align="right">{$users->last_name}</div>
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
+
+									<div class="col-sm-5 col-xs-6 tital" align="left">Datum registrace:</div><div class="col-sm-7" align="right">{$users->date_created}</div>
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
+
+									<div class="col-sm-5 col-xs-6 tital" align="left">Email:</div><div class="col-sm-7" align="right">{$users->user_email}</div>
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
+
+									<div class="col-sm-5 col-xs-6 tital" align="left">Přihlašovací jméno:</div><div class="col-sm-7" align="right">{$users->user_name}</div>
+
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
+
+									<div class="col-sm-5 col-xs-6 tital" align="left">O mě: </div><div class="col-sm-7" align="right">{$users->about_me}</div>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+	</div>
+    {/if}
+	</body>
+</hmtl>
+{/block}
+{block scripts}
+	<script src="https://files.nette.org/sandbox/jush.js"></script>
+{/block}
