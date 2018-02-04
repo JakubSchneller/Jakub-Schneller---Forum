@@ -17,17 +17,14 @@ use Nette\Http\Session;
 class ForumPresenter extends BasePresenter
 {
     private $database;
-    /** @persistent */
-    public $backlink = '';
 
     public function __construct(Context $database)
     {
         $this->database = $database;
     }
 
-    public function renderCategories($category_id)
+    public function renderCategories()
     {
-
         $topicsArray = [];
 
         $topics = $this->database->table("topics");
@@ -38,6 +35,8 @@ class ForumPresenter extends BasePresenter
                 'postsCount' => $this->database->table("posts")->where("subcategory_id = ? AND category_id = ?", $iTopic->subcategory_id, $iTopic->category_id)->count(),
                 'lastPost' => $this->database->table("posts")->where("subcategory_id = ? AND category_id = ?", $iTopic->subcategory_id, $iTopic->category_id)->order('post_id DESC')->fetch()
             ];
+
+
         }
 
 

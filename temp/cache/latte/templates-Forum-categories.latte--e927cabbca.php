@@ -72,8 +72,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
         <div class="page-header page-heading">
             <h1 class="pull-left">Forum</h1>
             <ol class="breadcrumb pull-right where-am-i">
-                <li><a href="#">Forum</a></li>
-                <li class="active">List of topics</li>
+                <li>Forum</li>
+                <li class="active">Seznam kategorií</li>
             </ol>
             <div class="clearfix"></div>
         </div>
@@ -87,8 +87,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
                 <th>
                     <h3>První kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -106,7 +106,7 @@ class Templatee927cabbca extends Latte\Runtime\Template
                         <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 66 */ ?></td>
 <?php
 				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">by <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 68 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 68 */ ?></small></td>
 <?php
@@ -133,8 +133,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
                 <th>
                     <h3>Druhá kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -152,7 +152,7 @@ class Templatee927cabbca extends Latte\Runtime\Template
                         <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 97 */ ?></td>
 <?php
 				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">by <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 99 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 99 */ ?></small></td>
 <?php
@@ -179,8 +179,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
                 <th>
                     <h3>Třetí kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -198,7 +198,7 @@ class Templatee927cabbca extends Latte\Runtime\Template
                         <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 128 */ ?></td>
 <?php
 				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">by <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 130 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 130 */ ?></small></td>
 <?php

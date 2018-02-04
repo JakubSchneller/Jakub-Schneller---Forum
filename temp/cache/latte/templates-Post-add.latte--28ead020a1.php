@@ -104,7 +104,7 @@ class Template28ead020a1 extends Latte\Runtime\Template
 		))->attributes() ?>>
                             Přidat
                         </button>
-                    <a class="btn btn-default"  href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:categories")) ?>">
+                    <a class="btn btn-default"  href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['categoryId' => $categoryId, 'subcategoryId' => $subcategoryId])) ?>">
                         Jít zpět
                     </a>
                     </div>

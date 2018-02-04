@@ -69,8 +69,8 @@ class Template468a623e48 extends Latte\Runtime\Template
 <div class="page-header page-heading">
     <h1 class="pull-left">Forums</h1>
     <ol class="breadcrumb pull-right where-am-i">
-        <li><a href="index.php">Topics</a></li>
-        <li class="active">List of posts</li>
+        <li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:categories")) ?>">Kategorie</a></li>
+        <li class="active">Seznam příspěvků</li>
     </ol>
     <div class="clearfix"></div>
 </div>

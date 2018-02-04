@@ -19,7 +19,6 @@ class PostPresenter extends BasePresenter
     private $database;
     private $user;
     private $userManager;
-    public $backlink = '';
 
     public function __construct(Context $database, User $user, UserManager $userManager)
     {
@@ -70,7 +69,7 @@ class PostPresenter extends BasePresenter
         ]);
 
         $this->flashMessage('Článek byl úspěšně přidán.');
-        $this->redirect('this');
+        $this->redirect('Forum:posts', array("categoryId" => $this->getParameter('categoryId'), "subcategoryId" => $this->getParameter('subcategoryId')));
     }
 
     protected function createComponentCommentForm()

@@ -36,8 +36,8 @@
         <div class="page-header page-heading">
             <h1 class="pull-left">Forum</h1>
             <ol class="breadcrumb pull-right where-am-i">
-                <li><a href="#">Forum</a></li>
-                <li class="active">List of topics</li>
+                <li>Forum</li>
+                <li class="active">Seznam kategorií</li>
             </ol>
             <div class="clearfix"></div>
         </div>
@@ -51,8 +51,8 @@
                 <th>
                     <h3>První kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -65,7 +65,7 @@
                         </td>
                         <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
                         {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}
@@ -82,8 +82,8 @@
                 <th>
                     <h3>Druhá kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -96,7 +96,7 @@
                         </td>
                         <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
                         {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}
@@ -113,8 +113,8 @@
                 <th>
                     <h3>Třetí kategorie</h3>
                 </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Posts</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Last Post</th>
+                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
+                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
@@ -127,7 +127,7 @@
                         </td>
                         <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
                         {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">by <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}
