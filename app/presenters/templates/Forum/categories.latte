@@ -44,98 +44,37 @@
         <p class="lead">This is the right place to discuss any ideas, critics, feature requests and all the ideas regarding our website. Please follow the forum rules and always check FAQ before posting to prevent duplicate posts.</p>
         <div class="col-md-12 center">
         </div>
+        {foreach $categories as $category}
         <table class="table forum table-striped">
             <thead>
             <tr>
                 <th class="cell-stat"></th>
                 <th>
-                    <h3>První kategorie</h3>
+                    <h3>{$category['db']->name}</h3>
                 </th>
                 <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
                 <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
             </tr>
             </thead>
             <tbody>
-            {foreach $topics as $topic}
-                {if $topic['db']->category_id == 0}
+            {foreach $category['topics'] as $topic}
                     <tr>
                         <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
                         <td>
-                            <h4><a n:href="Forum:posts 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
+                            <h4><a n:href="Forum:posts 'topicId' => $topic['db']->topic_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
                         </td>
                         <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
                         {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
+                            <td class="hidden-xs hidden-sm">Vytvořil <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['ageText']}</small></td>
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}
                     </tr>
-                {/if}
             {/foreach}
 
             </tbody>
         </table>
-        <table class="table forum table-striped">
-            <thead>
-            <tr>
-                <th class="cell-stat"></th>
-                <th>
-                    <h3>Druhá kategorie</h3>
-                </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
-            </tr>
-            </thead>
-            <tbody>
-            {foreach $topics as $topic}
-                {if $topic['db']->category_id == 1}
-                    <tr>
-                        <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
-                        <td>
-                            <h4><a n:href="Forum:posts 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
-                        </td>
-                        <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
-                        {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
-                        {else}
-                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
-                        {/if}
-                    </tr>
-                {/if}
-            {/foreach}
-            </tbody>
-
-        </table>
-        <table class="table forum table-striped">
-            <thead>
-            <tr>
-                <th class="cell-stat"></th>
-                <th>
-                    <h3>Třetí kategorie</h3>
-                </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
-            </tr>
-            </thead>
-            <tbody>
-            {foreach $topics as $topic}
-                {if $topic['db']->category_id == 2}
-                    <tr>
-                        <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
-                        <td>
-                            <h4><a n:href="Forum:posts, 'categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id">{$topic['db']->topic_name}</a><br><small>{$topic['db']->topic_description}</small></h4>
-                        </td>
-                        <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
-                        {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">Přidal <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['lastPost']->post_date}</small></td>
-                        {else}
-                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
-                        {/if}
-                    </tr>
-                {/if}
-            {/foreach}
-            </tbody>
-        </table>
+        {/foreach}
     </div>
     </div>
     </body>

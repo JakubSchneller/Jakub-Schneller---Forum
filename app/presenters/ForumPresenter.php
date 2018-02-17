@@ -25,25 +25,56 @@ class ForumPresenter extends BasePresenter
 
     public function renderCategories()
     {
-        $topicsArray = [];
+        $categoriesArray = [];
+        $categories = $this->database->table("categories");
 
-        $topics = $this->database->table("topics");
-
-        foreach ($topics as $iTopic) {
-            $topicsArray[] = [
-                'db' => $iTopic,
-                'postsCount' => $this->database->table("posts")->where("subcategory_id = ? AND category_id = ?", $iTopic->subcategory_id, $iTopic->category_id)->count(),
-                'lastPost' => $this->database->table("posts")->where("subcategory_id = ? AND category_id = ?", $iTopic->subcategory_id, $iTopic->category_id)->order('post_id DESC')->fetch()
+        foreach ($categories as $iCategory) {
+            $categoriesArray[$iCategory->id] = [
+                'db' => $iCategory,
+                'topics' => []
             ];
 
+            $topics = $this->database->table('topics')->where("category_id", $iCategory->id);
 
+            foreach ($topics as $iTopic) {
+
+
+                $tempArray = [
+                    'db' => $iTopic,
+                    'postsCount' => $this->database->table("posts")->where("topic_id", $iTopic->topic_id)->count(),
+                    'lastPost' => $this->database->table("posts")->where("topic_id", $iTopic->topic_id)->order('post_id DESC')->fetch(),
+                    'ageText' => ""
+                ];
+
+                if ($tempArray['lastPost']) {
+                    $now = new DateTime();
+                    $age = $now->diff($tempArray['lastPost']->post_date);
+                    $ageText = "";
+                    if ($age->y > 0) {
+                        $ageText = "Přidáno před " . $age->y . " lety";
+                    } else if ($age->m > 0) {
+                        $ageText = "Přidáno před " . $age->m . " měsíci";
+                    } else if ($age->d > 0) {
+                        $ageText = "Přidáno před " . $age->d . " dny";
+                    } else if ($age->h > 0) {
+                        $ageText = "Přidáno před " . $age->h . " hodinami";
+                    } else if ($age->i > 0) {
+                        $ageText = "Přidáno před " . $age->i . " minutami";
+                    } else {
+                        $ageText = "Přidáno právě nyní";
+                    }
+
+                    $tempArray['ageText'] = $ageText;
+                }
+
+                $categoriesArray[$iCategory->id]['topics'][] = $tempArray;
+            }
         }
 
 
-        $this->template->topics = $topicsArray;
-
         $users = $this->database->table("users");
         $this->template->users = $users;
+        $this->template->categories = $categoriesArray;
 
     }
     public function renderPost($postId, $categoryId, $subcategoryId)
@@ -107,13 +138,13 @@ class ForumPresenter extends BasePresenter
 
     }
 
-    public function renderPosts($categoryId, $subcategoryId)
+    public function renderPosts($categoryId, $topicId)
     {
-        $posts = $this->database->table("posts");
+        $posts = $this->database->table("posts")->where("topic_id", $topicId)->order('post_id DESC');
         $this->template->posts = $posts;
 
         $this->template->categoryId = $categoryId;
-        $this->template->subcategoryId = $subcategoryId;
+        $this->template->topicId = $topicId;
 
 
     }

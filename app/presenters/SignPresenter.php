@@ -13,6 +13,7 @@ use Tracy\Debugger;
 use App\Model\UserManager;
 use Nette\Utils\DateTime;
 use Nette\Http\Session;
+use Nette\Security;
 
 class SignPresenter extends BasePresenter
 {
@@ -113,10 +114,15 @@ class SignPresenter extends BasePresenter
 
     public function loginSuccess($form, $values)
     {
-        //$this->user->login($values->username, $values->password);
-        $this->user->login($values->username, $values->password);
-        $form->getPresenter()->flashMessage('Úspěšné přihlášení','success');
-        $form->getPresenter()->redirect('Homepage:default');
-    }
+        try{
+            $this->user->login($values->username, $values->password);
+            $form->getPresenter()->flashMessage('Úspěšné přihlášení','success');
+            $form->getPresenter()->redirect('Forum:categories');
+        }
+        catch (Security\AuthenticationException $e){
+            $this->flashMessage($e->getMessage(), 'warning');
+            $this->getPresenter()->redirect("Sign:in");
+        }
 
+    }
 }

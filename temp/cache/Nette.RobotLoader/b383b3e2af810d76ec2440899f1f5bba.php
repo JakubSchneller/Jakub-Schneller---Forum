@@ -22,16 +22,6 @@ return array (
       'file' => '/Applications/MAMP/htdocs/test/app/model/MyAuthenticator.php',
       'time' => 1512128913,
     ),
-    'App\\Model\\UserManager' => 
-    array (
-      'file' => '/Applications/MAMP/htdocs/test/app/model/UserManager.php',
-      'time' => 1512372246,
-    ),
-    'App\\Model\\DuplicateNameException' => 
-    array (
-      'file' => '/Applications/MAMP/htdocs/test/app/model/UserManager.php',
-      'time' => 1512372246,
-    ),
     'App\\Presenters\\Error4xxPresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/Error4xxPresenter.php',
@@ -52,11 +42,6 @@ return array (
       'file' => '/Applications/MAMP/htdocs/test/app/router/RouterFactory.php',
       'time' => 1504886050,
     ),
-    'App\\Presenters\\SignPresenter' => 
-    array (
-      'file' => '/Applications/MAMP/htdocs/test/app/presenters/SignPresenter.php',
-      'time' => 1516268088,
-    ),
     'App\\Presenters\\BasePresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/BasePresenter.php',
@@ -67,15 +52,30 @@ return array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/ProfilePresenter.php',
       'time' => 1517664791,
     ),
-    'App\\Presenters\\PostPresenter' => 
+    'App\\Model\\UserManager' => 
     array (
-      'file' => '/Applications/MAMP/htdocs/test/app/presenters/PostPresenter.php',
-      'time' => 1517762106,
+      'file' => '/Applications/MAMP/htdocs/test/app/model/UserManager.php',
+      'time' => 1518782622,
+    ),
+    'App\\Model\\DuplicateNameException' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/model/UserManager.php',
+      'time' => 1518782622,
+    ),
+    'App\\Presenters\\SignPresenter' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/presenters/SignPresenter.php',
+      'time' => 1518785288,
     ),
     'App\\Presenters\\ForumPresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/ForumPresenter.php',
-      'time' => 1517764371,
+      'time' => 1518864116,
+    ),
+    'App\\Presenters\\PostPresenter' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/presenters/PostPresenter.php',
+      'time' => 1518864533,
     ),
   ),
   1 => 

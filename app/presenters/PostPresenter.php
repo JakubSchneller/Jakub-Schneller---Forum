@@ -61,15 +61,14 @@ class PostPresenter extends BasePresenter
             'post_name'=> $values->name,
             'post_content'=>$values->content,
             'post_description'=>$values->description,
-            'category_id'=>$this->getParameter('categoryId'),
-            'subcategory_id'=>$this->getParameter('subcategoryId'),
+            'topic_id'=>$this->getParameter('topicId'),
             'post_date'=>new DateTime,
             'post_creator'=>$this->getUser()->getIdentity()->user_name,
             'post_creator_id'=>$this->getUser()->getIdentity()->user_id
         ]);
 
         $this->flashMessage('Článek byl úspěšně přidán.');
-        $this->redirect('Forum:posts', array("categoryId" => $this->getParameter('categoryId'), "subcategoryId" => $this->getParameter('subcategoryId')));
+        $this->redirect('Forum:posts', array("topicId" => $this->getParameter('topicId')));
     }
 
     protected function createComponentCommentForm()

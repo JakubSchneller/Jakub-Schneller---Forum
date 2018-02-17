@@ -29,7 +29,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['topic'])) trigger_error('Variable $topic overwritten in foreach on line 59, 90, 121');
+		if (isset($this->params['topic'])) trigger_error('Variable $topic overwritten in foreach on line 60');
+		if (isset($this->params['category'])) trigger_error('Variable $category overwritten in foreach on line 47');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -80,12 +81,16 @@ class Templatee927cabbca extends Latte\Runtime\Template
         <p class="lead">This is the right place to discuss any ideas, critics, feature requests and all the ideas regarding our website. Please follow the forum rules and always check FAQ before posting to prevent duplicate posts.</p>
         <div class="col-md-12 center">
         </div>
+<?php
+		$iterations = 0;
+		foreach ($categories as $category) {
+?>
         <table class="table forum table-striped">
             <thead>
             <tr>
                 <th class="cell-stat"></th>
                 <th>
-                    <h3>První kategorie</h3>
+                    <h3><?php echo LR\Filters::escapeHtmlText($category['db']->name) /* line 53 */ ?></h3>
                 </th>
                 <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
                 <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
@@ -93,22 +98,21 @@ class Templatee927cabbca extends Latte\Runtime\Template
             </thead>
             <tbody>
 <?php
-		$iterations = 0;
-		foreach ($topics as $topic) {
-			if ($topic['db']->category_id == 0) {
+			$iterations = 0;
+			foreach ($category['topics'] as $topic) {
 ?>
                     <tr>
                         <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
                         <td>
-                            <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id])) ?>"><?php
+                            <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['topicId' => $topic['db']->topic_id])) ?>"><?php
 				echo LR\Filters::escapeHtmlText($topic['db']->topic_name) /* line 64 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($topic['db']->topic_description) /* line 64 */ ?></small></h4>
                         </td>
                         <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 66 */ ?></td>
 <?php
 				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+					?>                            <td class="hidden-xs hidden-sm">Vytvořil <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 68 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 68 */ ?></small></td>
+					echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 68 */ ?></small></td>
 <?php
 				}
 				else {
@@ -119,104 +123,16 @@ class Templatee927cabbca extends Latte\Runtime\Template
 ?>
                     </tr>
 <?php
+				$iterations++;
 			}
-			$iterations++;
-		}
 ?>
 
             </tbody>
         </table>
-        <table class="table forum table-striped">
-            <thead>
-            <tr>
-                <th class="cell-stat"></th>
-                <th>
-                    <h3>Druhá kategorie</h3>
-                </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
-            </tr>
-            </thead>
-            <tbody>
 <?php
-		$iterations = 0;
-		foreach ($topics as $topic) {
-			if ($topic['db']->category_id == 1) {
-?>
-                    <tr>
-                        <td class="text-center"><i class="fa fa-question fa-2x text-primary"></i></td>
-                        <td>
-                            <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id])) ?>"><?php
-				echo LR\Filters::escapeHtmlText($topic['db']->topic_name) /* line 95 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($topic['db']->topic_description) /* line 95 */ ?></small></h4>
-                        </td>
-                        <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 97 */ ?></td>
-<?php
-				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 99 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 99 */ ?></small></td>
-<?php
-				}
-				else {
-?>
-                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
-<?php
-				}
-?>
-                    </tr>
-<?php
-			}
 			$iterations++;
 		}
 ?>
-            </tbody>
-
-        </table>
-        <table class="table forum table-striped">
-            <thead>
-            <tr>
-                <th class="cell-stat"></th>
-                <th>
-                    <h3>Třetí kategorie</h3>
-                </th>
-                <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
-                <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
-            </tr>
-            </thead>
-            <tbody>
-<?php
-		$iterations = 0;
-		foreach ($topics as $topic) {
-			if ($topic['db']->category_id == 2) {
-?>
-                    <tr>
-                        <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
-                        <td>
-                            <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['categoryId' => $topic['db']->category_id, 'subcategoryId' => $topic['db']->subcategory_id])) ?>"><?php
-				echo LR\Filters::escapeHtmlText($topic['db']->topic_name) /* line 126 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($topic['db']->topic_description) /* line 126 */ ?></small></h4>
-                        </td>
-                        <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 128 */ ?></td>
-<?php
-				if ($topic['lastPost']) {
-					?>                            <td class="hidden-xs hidden-sm">Přidal <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 130 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_date) /* line 130 */ ?></small></td>
-<?php
-				}
-				else {
-?>
-                            <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
-<?php
-				}
-?>
-                    </tr>
-<?php
-			}
-			$iterations++;
-		}
-?>
-            </tbody>
-        </table>
     </div>
     </div>
     </body>

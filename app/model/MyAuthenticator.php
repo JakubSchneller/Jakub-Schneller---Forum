@@ -25,7 +25,6 @@ class MyAuthenticator implements Security\IAuthenticator
             throw new Security\AuthenticationException('User not found.');
         }
 
-        //else if (!Nette\Security\Passwords::verify($password, $row->user_pass)) {
         else if (Security\Passwords::hash($password) != $row->user_pass) {
             throw new Security\AuthenticationException('Invalid password.');
         }

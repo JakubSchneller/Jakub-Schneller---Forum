@@ -105,26 +105,24 @@ class Template468a623e48 extends Latte\Runtime\Template
     </thead>
 
     <tbody>
-    <a type="button" id="newpost" class="btn btn-primary ribbon" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Post:Add", ['categoryId' => $categoryId, 'subcategoryId' => $subcategoryId])) ?>">Přidat nový příspěvek</a>
+    <a type="button" id="newpost" class="btn btn-primary ribbon" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Post:Add", ['topicId' => $topicId])) ?>">Přidat nový příspěvek</a>
 <?php
 		$iterations = 0;
-		foreach ($posts->order('post_id DESC') as $post) {
-			if ($categoryId == $post->category_id && $subcategoryId == $post->subcategory_id) {
+		foreach ($posts as $post) {
 ?>
         <tr>
         <td class="text-center"><i class="  fa fa-question fa-2x text-primary"></i></td>
         <td>
             <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:post", ['postId' => $post->post_id])) ?>"><?php
-				echo LR\Filters::escapeHtmlText($post->post_name) /* line 70 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 70 */ ?></small></h4>
+			echo LR\Filters::escapeHtmlText($post->post_name) /* line 69 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 69 */ ?></small></h4>
         </td>
         <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
         <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
         <td class="hidden-xs hidden-sm"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
-				echo LR\Filters::escapeHtmlText($post->post_creator) /* line 74 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
-				echo LR\Filters::escapeHtmlText($post->post_date) /* line 74 */ ?></small></td>
+			echo LR\Filters::escapeHtmlText($post->post_creator) /* line 73 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
+			echo LR\Filters::escapeHtmlText($post->post_date) /* line 73 */ ?></small></td>
         </tr>
 <?php
-			}
 			$iterations++;
 		}
 ?>
