@@ -27,16 +27,11 @@ class PostPresenter extends BasePresenter
         $this->userManager = $userManager;
     }
 
-    public function renderAdd($categoryId, $subcategoryId, $postId)
+    public function renderAdd($topicId)
     {
         $myUser = $this->user->getIdentity();
         $this->template->currentUser = $myUser;
-
-        $post = $this->database->table("posts")->get($postId);
-        $this->template->post = $post;
-
-        $this->template->categoryId = $categoryId;
-        $this->template->subcategoryId = $subcategoryId;
+        $this->template->topicId = $topicId;
     }
 
     protected function createComponentAddArticle()

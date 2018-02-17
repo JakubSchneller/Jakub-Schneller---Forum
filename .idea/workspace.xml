@@ -6,21 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a70b363b-0138-4399-a384-ed491144de11" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bootstrap.php" afterPath="$PROJECT_DIR$/app/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/MyAuthenticator.php" afterPath="$PROJECT_DIR$/app/model/MyAuthenticator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/UserManager.php" afterPath="$PROJECT_DIR$/app/model/UserManager.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/ForumPresenter.php" afterPath="$PROJECT_DIR$/app/presenters/ForumPresenter.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/PostPresenter.php" afterPath="$PROJECT_DIR$/app/presenters/PostPresenter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/SignPresenter.php" afterPath="$PROJECT_DIR$/app/presenters/SignPresenter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/templates/Forum/categories.latte" afterPath="$PROJECT_DIR$/app/presenters/templates/Forum/categories.latte" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte" afterPath="$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/templates/Post/Add.latte" afterPath="$PROJECT_DIR$/app/presenters/templates/Post/Add.latte" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_dc08bd2b06.php.meta" afterPath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_dc08bd2b06.php.meta" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/Nette.RobotLoader/b383b3e2af810d76ec2440899f1f5bba.php" afterPath="$PROJECT_DIR$/temp/cache/Nette.RobotLoader/b383b3e2af810d76ec2440899f1f5bba.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/_Nette.Database.18cba910a15c37edfb270509785c9ec0/_63a07541e3b1b95cf85819f9cfe5cc0f" afterPath="$PROJECT_DIR$/temp/cache/_Nette.Database.18cba910a15c37edfb270509785c9ec0/_63a07541e3b1b95cf85819f9cfe5cc0f" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/_Nette.Database.Structure.18cba910a15c37edfb270509785c9ec0/_07414f4e15ca943e6cde032dec85d92f" afterPath="$PROJECT_DIR$/temp/cache/_Nette.Database.Structure.18cba910a15c37edfb270509785c9ec0/_07414f4e15ca943e6cde032dec85d92f" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/latte/templates-Forum-categories.latte--e927cabbca.php" afterPath="$PROJECT_DIR$/temp/cache/latte/templates-Forum-categories.latte--e927cabbca.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/latte/templates-Forum-posts.latte--468a623e48.php" afterPath="$PROJECT_DIR$/temp/cache/latte/templates-Forum-posts.latte--468a623e48.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nette/security/src/Security/AuthenticationException.php" afterPath="$PROJECT_DIR$/vendor/nette/security/src/Security/AuthenticationException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/latte/templates-Post-add.latte--28ead020a1.php" afterPath="$PROJECT_DIR$/temp/cache/latte/templates-Post-add.latte--28ead020a1.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,31 +27,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IAuthorizator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/nette/security/src/Security/IAuthorizator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ForumPresenter.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/presenters/ForumPresenter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2055">
-              <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="posts.latte" pinned="false" current-in-tab="false">
+      <file leaf-file-name="posts.latte" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+            <state relative-caret-position="155">
+              <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Add.latte" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/presenters/templates/Post/Add.latte">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="46" column="90" lean-forward="false" selection-start-line="46" selection-start-column="90" selection-end-line="46" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -74,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostPresenter.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostPresenter.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/presenters/PostPresenter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="70" column="88" lean-forward="false" selection-start-line="70" selection-start-column="88" selection-end-line="70" selection-end-column="88" />
+            <state relative-caret-position="144">
+              <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -203,16 +196,16 @@
         <option value="$PROJECT_DIR$/app/presenters/BasePresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/templates/Forum/post.latte" />
         <option value="$PROJECT_DIR$/app/presenters/ProfilePresenter.php" />
-        <option value="$PROJECT_DIR$/app/presenters/templates/Post/Add.latte" />
         <option value="$PROJECT_DIR$/vendor/nette/security/src/Security/AuthenticationException.php" />
         <option value="$PROJECT_DIR$/app/model/MyAuthenticator.php" />
         <option value="$PROJECT_DIR$/app/model/UserManager.php" />
         <option value="$PROJECT_DIR$/app/bootstrap.php" />
         <option value="$PROJECT_DIR$/app/presenters/SignPresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/templates/Forum/categories.latte" />
+        <option value="$PROJECT_DIR$/app/presenters/templates/Post/Add.latte" />
+        <option value="$PROJECT_DIR$/app/presenters/PostPresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/ForumPresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte" />
-        <option value="$PROJECT_DIR$/app/presenters/PostPresenter.php" />
       </list>
     </option>
   </component>
@@ -435,12 +428,12 @@
       <workItem from="1516964196294" duration="6430000" />
       <workItem from="1517316647630" duration="3465000" />
       <workItem from="1517761118150" duration="2942000" />
-      <workItem from="1518779108809" duration="7958000" />
+      <workItem from="1518779108809" duration="9052000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107215000" />
+    <option name="totallyTimeSpent" value="108309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -703,14 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/templates/Post/Add.latte">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="66" lean-forward="false" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/nette/security/src/Security/AuthenticationException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -809,6 +794,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/presenters/PostPresenter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/presenters/templates/Forum/categories.latte">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
@@ -817,26 +810,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte">
+    <entry file="file://$PROJECT_DIR$/app/presenters/templates/Post/Add.latte">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+        <state relative-caret-position="584">
+          <caret line="46" column="90" lean-forward="false" selection-start-line="46" selection-start-column="90" selection-end-line="46" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/presenters/ForumPresenter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2055">
-          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+        <state relative-caret-position="361">
+          <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/PostPresenter.php">
+    <entry file="file://$PROJECT_DIR$/app/presenters/templates/Forum/posts.latte">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="70" column="88" lean-forward="false" selection-start-line="70" selection-start-column="88" selection-end-line="70" selection-end-column="88" />
+        <state relative-caret-position="155">
+          <caret line="33" column="42" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
           <folding />
         </state>
       </provider>

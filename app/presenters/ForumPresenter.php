@@ -141,10 +141,14 @@ class ForumPresenter extends BasePresenter
     public function renderPosts($categoryId, $topicId)
     {
         $posts = $this->database->table("posts")->where("topic_id", $topicId)->order('post_id DESC');
+        $topic = $this->database->table("topics")->where("topic_id", $topicId)->fetch();
+        $category = $this->database->table("categories")->where("id", $topic->category_id)->fetch();
         $this->template->posts = $posts;
 
         $this->template->categoryId = $categoryId;
         $this->template->topicId = $topicId;
+        $this->template->topic = $topic;
+        $this->template->category = $category;
 
 
     }

@@ -31,7 +31,7 @@
 
 <div class="container"">
 <div class="page-header page-heading">
-    <h1 class="pull-left">Forums</h1>
+    <h1 class="pull-left">{$category->name}</h1>
     <ol class="breadcrumb pull-right where-am-i">
         <li><a n:href="Forum:categories">Kategorie</a></li>
         <li class="active">Seznam příspěvků</li>
@@ -44,15 +44,7 @@
     <tr>
         <th class="cell-stat"></th>
         <th>
-            {if $categoryId == 0}
-            <h3>První kategorie</h3>
-            {/if}
-            {if $categoryId == 1}
-            <h3>Druhá kategorie</h3>
-            {/if}
-            {if $categoryId == 2}
-            <h3>Třetí kategorie</h3>
-            {/if}
+            <h3>{$topic->topic_name}</h3>
         </th>
         <th class="cell-stat text-center hidden-xs hidden-sm"></th>
         <th class="cell-stat text-center hidden-xs hidden-sm"></th>
