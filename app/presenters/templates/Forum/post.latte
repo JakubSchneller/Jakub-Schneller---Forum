@@ -11,6 +11,7 @@
         <title>Blog post</title>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\css\bootstrap.css">
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist\jquery\jquery.min.js">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 
         <style>
@@ -215,10 +216,10 @@
             .row{
                 width: 100%;
             }
-            .right{
-                float: right;
-            }
+            .notloggedin{
+                text-align: center;
 
+            }
         </style>
     </head>
     <body>
@@ -234,14 +235,15 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    vytvořil/a
-                    <a n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a>
+                    {$post->post_description}
+                    <br>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><strong>Přidáno {$post->post_date}</p></strong>
+                <p><strong>Vytvořil/a
+                        <a n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a> {$post->post_date}</p></strong>
 
                 <hr>
 
@@ -253,7 +255,6 @@
                             <h3>Komentáře</h3>
                             <hr>
                         {foreach $comments as $comment}
-
                         <div class="col-sm-1">
                             <div class="thumbnail">
                                 <img class="img-responsive user-photo" src="../{$comment['dbrow']->creator_image}">
@@ -273,7 +274,10 @@
                                 </div><!-- /panel-body -->
                             </div><!-- /panel panel-default -->
                         </div>
+
                         {/foreach}
+
+                {if $user->isLoggedIn()}
                 <div class="widget-area no-padding blank">
                     <div class="status-upload">
                         <form n:name="commenting">
@@ -284,10 +288,6 @@
                         </form>
                     </div><!-- Status Upload  -->
                 </div><!-- Widget Area -->
-                <br>
-                <br>
-                <br>
-
 
             </div>
 
@@ -296,6 +296,18 @@
 
     </div>
     <!-- /container -->
+
+                <br>
+                <br>
+                <br>
+                {else}
+                    <div class="notloggedin">
+                    <p><strong>Musíš být přihlášen aby si mohl přidat komentář</strong></p>
+                    <a n:href="Sign:up">Zaregistruj se zde</a><br><a n:href="Sign:in">Přihlaš se zde</a>
+                    </div>
+                {/if}
+
+
     <br>
     <br>
     <br>

@@ -30,7 +30,6 @@ class Templateaf6cdf7d78 extends Latte\Runtime\Template
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 14 */ ?>/css/style.css">
 	<link rel="stylesheet" href="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 15 */ ?>/bootstrap/css/bootstrap.css">
-
     <?php
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('head', get_defined_vars());
@@ -40,9 +39,9 @@ class Templateaf6cdf7d78 extends Latte\Runtime\Template
 <body>
 
 <?php
-		/* line 22 */
+		/* line 21 */
 		$this->createTemplate("components/header.latte", $this->params, "include")->renderToContentType('html');
-		/* line 23 */
+		/* line 22 */
 		$this->createTemplate("components/footer.latte", $this->params, "include")->renderToContentType('html');
 ?>
 
@@ -50,7 +49,7 @@ class Templateaf6cdf7d78 extends Latte\Runtime\Template
 		$iterations = 0;
 		foreach ($flashes as $flash) {
 			?><div<?php if ($_tmp = array_filter(['flash', $flash->type])) echo ' class="', LR\Filters::escapeHtmlAttr(implode(" ", array_unique($_tmp))), '"' ?>><?php
-			echo LR\Filters::escapeHtmlText($flash->message) /* line 25 */ ?></div>
+			echo LR\Filters::escapeHtmlText($flash->message) /* line 24 */ ?></div>
 <?php
 			$iterations++;
 		}
@@ -72,7 +71,7 @@ class Templateaf6cdf7d78 extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 25');
+		if (isset($this->params['flash'])) trigger_error('Variable $flash overwritten in foreach on line 24');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -87,10 +86,10 @@ class Templateaf6cdf7d78 extends Latte\Runtime\Template
 	function blockScripts($_args)
 	{
 		extract($_args);
-		?>	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 30 */ ?>/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 31 */ ?>/bootstrap/js/bootstrap.min.js"></script>
+		?>	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 29 */ ?>/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 30 */ ?>/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 33 */ ?>/js/main.js"></script>
+	<script src="<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($basePath)) /* line 32 */ ?>/js/main.js"></script>
 <?php
 	}
 

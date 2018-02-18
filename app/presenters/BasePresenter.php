@@ -26,6 +26,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         if ($user->isLoggedIn())
         {
             $this->template->loggedin_name = $user->getIdentity()->user_name;
+            $this->template->loggedin_image = $user->getIdentity()->image;
+            $this->template->loggedin_role = $user->getIdentity()->role;
         }
 
     }

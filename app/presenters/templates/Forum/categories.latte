@@ -26,22 +26,19 @@
             .forum.table th.cell-stat-2x {
                 width: 14em;
             }
-            #newpost {
-                width: 100%;
-            }
         </style>
     </head>
     <body>
     <div class="container">
         <div class="page-header page-heading">
-            <h1 class="pull-left">Forum</h1>
+            <h1 class="pull-left">iForum</h1>
             <ol class="breadcrumb pull-right where-am-i">
-                <li>Forum</li>
+                <li>iForum</li>
                 <li class="active">Seznam kategorií</li>
             </ol>
             <div class="clearfix"></div>
         </div>
-        <p class="lead">This is the right place to discuss any ideas, critics, feature requests and all the ideas regarding our website. Please follow the forum rules and always check FAQ before posting to prevent duplicate posts.</p>
+        <p class="lead">Tohle je místo kde můžete s ostatními uživateli diskutovat, kritizovat a navrhovat změny na webové stránce. Řiďte se dle pravidel a vždy kontrolujte FAQ než přidáte příspěvek. Předcházejte duplikaci!</p>
         <div class="col-md-12 center">
         </div>
         {foreach $categories as $category}
@@ -65,7 +62,9 @@
                         </td>
                         <td class="text-center hidden-xs hidden-sm">{$topic['postsCount']}</td>
                         {if $topic['lastPost']}
-                            <td class="hidden-xs hidden-sm">Vytvořil <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$topic['ageText']}</small></td>
+                            <td class="hidden-xs hidden-sm">
+                                <a n:href="Forum:post, 'postId' => $topic['lastPost']->post_id">{$topic['lastPost']->post_name}</a>
+                                <br><small>Vytvořil <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a>{$topic['ageText']}</small></td>
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}

@@ -87,12 +87,16 @@ class Template614b415246 extends Latte\Runtime\Template
 
 									<div class="col-sm-5 col-xs-6 tital" align="left">Přihlašovací jméno:</div><div class="col-sm-7" align="right"><?php
 		echo LR\Filters::escapeHtmlText($currentUser->user_name) /* line 48 */ ?></div>
+									<div class="clearfix"></div>
+									<div class="bot-border"></div>
 
+									<div class="col-sm-5 col-xs-6 tital" align="left">Role:</div><div class="col-sm-7" align="right"><?php
+		echo LR\Filters::escapeHtmlText($currentUser->role) /* line 52 */ ?></div>
 									<div class="clearfix"></div>
 									<div class="bot-border"></div>
 
 									<div class="col-sm-5 col-xs-6 tital" align="left">O mě: </div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->about_me) /* line 53 */ ?></div>
+		echo LR\Filters::escapeHtmlText($currentUser->about_me) /* line 56 */ ?></div>
 									</p>
 								</div>
 							</div>

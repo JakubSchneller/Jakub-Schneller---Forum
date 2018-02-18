@@ -51,17 +51,17 @@ class ForumPresenter extends BasePresenter
                     $age = $now->diff($tempArray['lastPost']->post_date);
                     $ageText = "";
                     if ($age->y > 0) {
-                        $ageText = "Přidáno před " . $age->y . " lety";
+                        $ageText = " před " . $age->y . " lety";
                     } else if ($age->m > 0) {
-                        $ageText = "Přidáno před " . $age->m . " měsíci";
+                        $ageText = " před " . $age->m . " měsíci";
                     } else if ($age->d > 0) {
-                        $ageText = "Přidáno před " . $age->d . " dny";
+                        $ageText = " před " . $age->d . " dny";
                     } else if ($age->h > 0) {
-                        $ageText = "Přidáno před " . $age->h . " hodinami";
+                        $ageText = " před " . $age->h . " hodinami";
                     } else if ($age->i > 0) {
-                        $ageText = "Přidáno před " . $age->i . " minutami";
+                        $ageText = " před " . $age->i . " minutami";
                     } else {
-                        $ageText = "Přidáno právě nyní";
+                        $ageText = " právě nyní";
                     }
 
                     $tempArray['ageText'] = $ageText;
@@ -77,13 +77,12 @@ class ForumPresenter extends BasePresenter
         $this->template->categories = $categoriesArray;
 
     }
-    public function renderPost($postId, $categoryId, $subcategoryId)
+    public function renderPost($postId, $categoryId)
     {
         $commentsArray = [];
 
         $post = $this->database->table("posts")->get($postId);
         $this->template->categoryId = $categoryId;
-        $this->template->subcategoryId = $subcategoryId;
         $users = $this->database->table("users");
         $this->template->users = $users;
         if ($post)
@@ -173,9 +172,47 @@ class ForumPresenter extends BasePresenter
             'creator_name' => $this->getUser()->getIdentity()->user_name,
             'creator_id'   => $this->getUser()->getIdentity()->user_id,
             'creator_image' => $this->getUser()->getIdentity()->image
-
         ]);
         $this->redirect('this');
+    }
+
+    public function renderAdmin()
+    {
+        $user = $this->getUser();
+        if ($user->isLoggedIn())
+        {
+            $userId = $this->getUser()->getId();
+            $currentUser = $this->database->table("users")->where("user_id", $userId)->fetch();
+            if ($currentUser->role == "admin" || $currentUser->role == "owner")
+            {
+                $accounts = $this->database->table("users");
+                $owners = $this->database->table("users")->where("role", "owner");
+                $admins = $this->database->table("users")->where("role", "admin");
+                $registered = $this->database->table("users")->where("role", "user");
+
+                foreach ($accounts as $iAccount) {
+                    $accountsArray = [
+                        'accounts' => $iAccount,
+                        'owners' => $owners,
+                        'admins' => $admins,
+                        'registered' => $registered
+                    ];
+                    $this->template->accounts = $accountsArray;
+                }
+            }
+            else
+            {
+                $this->flashMessage('Na tuhle stránku má přístup jen vlastník nebo admin', 'warning');
+                $this->redirect("Homepage:default");
+
+            }
+        }
+        else
+        {
+            $this->flashMessage('Na tuhle stránku má přístup jen vlastník nebo admin', 'warning');
+            $this->redirect("Homepage:default");
+        }
+
     }
 
 
