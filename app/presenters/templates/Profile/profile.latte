@@ -17,7 +17,7 @@
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<div class="panel panel-default">
-						<div class="panel-body text-left">
+						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
 									<div align="center">
@@ -27,33 +27,37 @@
 									</div>
 								</div>
 								<div class="col-md-12">
-									<h2 align="center">{$currentUser->first_name} {$currentUser->last_name}</h2><br>
-									<p>
-									<div class="col-sm-5 col-xs-6 tital" align="left">Křestní jméno:</div><div class="col-sm-7 col-xs-6" align="right">{$currentUser->first_name}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
+									<h2 align="center">{$currentUser->first_name} {$currentUser->last_name}</h2>
+									<div class="text-center">
+									<a n:href="Profile:editprofile, 'userId' => $currentUser->user_id" type="button" class="btn btn-success" style="margin: auto">Editovat</a>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Křestní jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->first_name}" disabled="" type="text">
+									</div>
 
-									<div class="col-sm-5 col-xs-6 tital" align="left">Příjmení:</div><div class="col-sm-7" align="right">{$currentUser->last_name}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Datum registrace:</div><div class="col-sm-7" align="right">{$currentUser->date_created}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Email:</div><div class="col-sm-7" align="right">{$currentUser->user_email}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Přihlašovací jméno:</div><div class="col-sm-7" align="right">{$currentUser->user_name}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Role:</div><div class="col-sm-7" align="right">{$currentUser->role}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">O mě: </div><div class="col-sm-7" align="right">{$currentUser->about_me}</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Příjmení:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->last_name}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Datum registrace:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->date_created}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Email:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->user_email}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Přihlašovací jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->user_name}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Role:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$currentUser->role}" disabled="" type="text">
+									</div>
 									</p>
 								</div>
 							</div>
@@ -66,7 +70,4 @@
 	</div>
 	</body>
 </hmtl>
-{/block}
-{block scripts}
-	<script src="https://files.nette.org/sandbox/jush.js"></script>
 {/block}

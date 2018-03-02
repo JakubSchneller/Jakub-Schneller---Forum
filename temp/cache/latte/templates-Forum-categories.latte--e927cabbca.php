@@ -7,12 +7,10 @@ class Templatee927cabbca extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
-		'scripts' => 'blockScripts',
 	];
 
 	public $blockTypes = [
 		'content' => 'html',
-		'scripts' => 'html',
 	];
 
 
@@ -21,7 +19,6 @@ class Templatee927cabbca extends Latte\Runtime\Template
 		extract($this->params);
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
-		$this->renderBlock('scripts', get_defined_vars());
 		return get_defined_vars();
 	}
 
@@ -29,8 +26,8 @@ class Templatee927cabbca extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['topic'])) trigger_error('Variable $topic overwritten in foreach on line 57');
-		if (isset($this->params['category'])) trigger_error('Variable $category overwritten in foreach on line 44');
+		if (isset($this->params['topic'])) trigger_error('Variable $topic overwritten in foreach on line 53');
+		if (isset($this->params['category'])) trigger_error('Variable $category overwritten in foreach on line 40');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -57,7 +54,7 @@ class Templatee927cabbca extends Latte\Runtime\Template
             }
 
             .forum.table th.cell-stat {
-                width: 6em;
+                width: 6%;
             }
 
             .forum.table th.cell-stat-2x {
@@ -87,7 +84,7 @@ class Templatee927cabbca extends Latte\Runtime\Template
             <tr>
                 <th class="cell-stat"></th>
                 <th>
-                    <h3><?php echo LR\Filters::escapeHtmlText($category['db']->name) /* line 50 */ ?></h3>
+                    <h3><?php echo LR\Filters::escapeHtmlText($category['db']->name) /* line 46 */ ?></h3>
                 </th>
                 <th class="cell-stat text-center hidden-xs hidden-sm">Příspěvky</th>
                 <th class="cell-stat-2x hidden-xs hidden-sm">Poslední příspěvek</th>
@@ -102,17 +99,17 @@ class Templatee927cabbca extends Latte\Runtime\Template
                         <td class="text-centx<er"><i class="fa fa-question fa-2x text-primary"></i></td>
                         <td>
                             <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:posts", ['topicId' => $topic['db']->topic_id])) ?>"><?php
-				echo LR\Filters::escapeHtmlText($topic['db']->topic_name) /* line 61 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($topic['db']->topic_description) /* line 61 */ ?></small></h4>
+				echo LR\Filters::escapeHtmlText($topic['db']->topic_name) /* line 57 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($topic['db']->topic_description) /* line 57 */ ?></small></h4>
                         </td>
-                        <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 63 */ ?></td>
+                        <td class="text-center hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($topic['postsCount']) /* line 59 */ ?></td>
 <?php
 				if ($topic['lastPost']) {
 ?>
                             <td class="hidden-xs hidden-sm">
                                 <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:post", ['postId' => $topic['lastPost']->post_id])) ?>"><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_name) /* line 66 */ ?></a>
+					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_name) /* line 62 */ ?></a>
                                 <br><small>Vytvořil <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 67 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 67 */ ?></small></td>
+					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 63 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 63 */ ?></small></td>
 <?php
 				}
 				else {
@@ -137,13 +134,6 @@ class Templatee927cabbca extends Latte\Runtime\Template
     </div>
     </body>
     </html>
-<?php
-	}
-
-
-	function blockScripts($_args)
-	{
-?>    <script src="https://files.nette.org/sandbox/jush.js"></script>
 <?php
 	}
 

@@ -47,6 +47,11 @@ return array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/ErrorPresenter.php',
       'time' => 1504886050,
     ),
+    'App\\Presenters\\ForumPresenter' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/presenters/ForumPresenter.php',
+      'time' => 1518970222,
+    ),
     'App\\Presenters\\HomepagePresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/HomepagePresenter.php',
@@ -60,32 +65,26 @@ return array (
     'App\\Presenters\\ProfilePresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/ProfilePresenter.php',
-      'time' => 1518874961,
+      'time' => 1519233628,
     ),
     'App\\Presenters\\SignPresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/SignPresenter.php',
       'time' => 1518785288,
     ),
+    'App\\Presenters\\UserPresenter' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/presenters/UserPresenter.php',
+      'time' => 1519026403,
+    ),
     'App\\RouterFactory' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/router/RouterFactory.php',
       'time' => 1504886050,
     ),
-    'App\\Presenters\\ForumPresenter' => 
-    array (
-      'file' => '/Applications/MAMP/htdocs/test/app/presenters/ForumPresenter.php',
-      'time' => 1518970222,
-    ),
   ),
   1 => 
   array (
-    'Nette\\Environment' => 11,
-    'App\\IndexModule\\Presenters\\PhpPresenter' => 1,
-    'App\\Presenters\\Passwords' => 2,
-    'App\\Presenters\\Context' => 3,
-    'App\\Presenters\\componentsPresenter' => 1,
-    'App\\Presenters\\HeaderPresenter' => 1,
-    'App\\Presenters\\AdminPresenter' => 1,
+    'Nette\\Environment' => 3,
   ),
 );

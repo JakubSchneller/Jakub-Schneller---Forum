@@ -1,5 +1,8 @@
 {block content}
 	<style>
+		#bs-example-navbar-collapse-1.collapse.navbar-collapse{
+			background-color: black;
+		}
 		.bs-dark.navbar-inverse {
 			background-color: #222;
 			border-color: #080808;
@@ -31,6 +34,7 @@
 			color: rgba(255,255,255,0.70);
 			text-decoration: none;
 			background-color: transparent;
+			background-image: none;
 		}
 		.bs-dark .dropdown-menu > .active > a,
 		.bs-dark .dropdown-menu > .active > a:hover,
@@ -38,6 +42,7 @@
 			color: rgba(255,255,255,0.70);
 			text-decoration: none;
 			background-color: transparent;
+			background-image: none;
 			outline: 0;
 		}
 
@@ -93,7 +98,6 @@
 			}
 
 		}
-
 	</style>
 	<!------------- Navbar -------------->
 	<nav class="navbar navbar-inverse bs-dark">
@@ -120,26 +124,26 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
                 {if $user->isLoggedIn() }
-				<li class="dropdown">
-					<a n:href="Profile:profile" class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						Přihlášen jako: {$loggedin_name}
-						<img src="../{$loggedin_image}" class="img-circle" alt="Profile Image" />
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a n:href=Profile:profile>Můj profil</a></li>
-						<li><a n:href=Profile:myposts>Moje příspěvky</a></li>
-						{if $loggedin_role == owner || $loggedin_role == admin}
-							<li role="separator" class="divider"></li>
-							<li><a n:href="Forum:admin">Spravovat uživatele</a></li>
-						<li><a n:href=Sign:out>Odhlášení</a></li>
-						{else}
-						<li role="separator" class="divider"></li>
-						<li><a>Nahlásit chybu/zneužití</a></li>
-						<li><a n:href=Sign:out>Odhlášení</a></li>
-						{/if}
-					</ul>
-				</li>
-				{else}
+					<li class="dropdown">
+						<a n:href="Profile:profile" class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Přihlášen jako: {$loggedin_name}
+							<img src="../{$loggedin_image}" class="img-circle" alt="Profile Image" />
+						</a>
+						<ul class="dropdown-menu">
+							<li><a n:href=Profile:profile>Můj profil</a></li>
+							<li><a n:href=Profile:myposts>Moje příspěvky</a></li>
+                            {if $loggedin_role == owner || $loggedin_role == admin}
+								<li role="separator" class="divider"></li>
+								<li><a n:href="Forum:admin">Spravovat uživatele</a></li>
+								<li><a n:href=Sign:out>Odhlášení</a></li>
+                            {else}
+								<li role="separator" class="divider"></li>
+								<li><a>Nahlásit chybu/zneužití</a></li>
+								<li><a n:href=Sign:out>Odhlášení</a></li>
+                            {/if}
+						</ul>
+					</li>
+                {else}
 					<li><a n:href=Sign:up> Registrace</a></li>
 					<li><a n:href=Sign:in> Přihlášení</a></li>
                 {/if}
@@ -147,10 +151,6 @@
 		</div>
 	</nav>
 
-{/block}
-
-{block scripts}
-	<script src="https://files.nette.org/sandbox/jush.js"></script>
 {/block}
 
 

@@ -125,7 +125,7 @@ return array(
     'Nette\\ComponentModel\\IComponent' => $vendorDir . '/nette/component-model/src/ComponentModel/IComponent.php',
     'Nette\\ComponentModel\\IContainer' => $vendorDir . '/nette/component-model/src/ComponentModel/IContainer.php',
     'Nette\\ComponentModel\\RecursiveComponentIterator' => $vendorDir . '/nette/component-model/src/ComponentModel/RecursiveComponentIterator.php',
-    'Nette\\Configurator' => $vendorDir . '/nette/bootstrap/src/Bootstrap/Configurator.php',
+    'Nette\\Configurator' => $vendorDir . '/nette/bootstrap/src/bootstrap/Configurator.php',
     'Nette\\DI\\Compiler' => $vendorDir . '/nette/di/src/DI/Compiler.php',
     'Nette\\DI\\CompilerExtension' => $vendorDir . '/nette/di/src/DI/CompilerExtension.php',
     'Nette\\DI\\Config\\Adapters\\IniAdapter' => $vendorDir . '/nette/di/src/DI/Config/Adapters/IniAdapter.php',

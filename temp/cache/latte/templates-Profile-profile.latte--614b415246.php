@@ -7,12 +7,10 @@ class Template614b415246 extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
-		'scripts' => 'blockScripts',
 	];
 
 	public $blockTypes = [
 		'content' => 'html',
-		'scripts' => 'html',
 	];
 
 
@@ -21,7 +19,6 @@ class Template614b415246 extends Latte\Runtime\Template
 		extract($this->params);
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
-		$this->renderBlock('scripts', get_defined_vars());
 		return get_defined_vars();
 	}
 
@@ -52,7 +49,7 @@ class Template614b415246 extends Latte\Runtime\Template
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<div class="panel panel-default">
-						<div class="panel-body text-left">
+						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
 									<div align="center">
@@ -63,40 +60,37 @@ class Template614b415246 extends Latte\Runtime\Template
 								</div>
 								<div class="col-md-12">
 									<h2 align="center"><?php echo LR\Filters::escapeHtmlText($currentUser->first_name) /* line 30 */ ?> <?php
-		echo LR\Filters::escapeHtmlText($currentUser->last_name) /* line 30 */ ?></h2><br>
-									<p>
-									<div class="col-sm-5 col-xs-6 tital" align="left">Křestní jméno:</div><div class="col-sm-7 col-xs-6" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->first_name) /* line 32 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
+		echo LR\Filters::escapeHtmlText($currentUser->last_name) /* line 30 */ ?></h2>
+									<div class="text-center">
+									<a type="button" class="btn btn-success" style="margin: auto" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $currentUser->user_id])) ?>">Editovat</a>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Křestní jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->first_name) /* line 38 */ ?>" disabled="" type="text">
+									</div>
 
-									<div class="col-sm-5 col-xs-6 tital" align="left">Příjmení:</div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->last_name) /* line 36 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Datum registrace:</div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->date_created) /* line 40 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Email:</div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->user_email) /* line 44 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Přihlašovací jméno:</div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->user_name) /* line 48 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Role:</div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->role) /* line 52 */ ?></div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">O mě: </div><div class="col-sm-7" align="right"><?php
-		echo LR\Filters::escapeHtmlText($currentUser->about_me) /* line 56 */ ?></div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Příjmení:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->last_name) /* line 43 */ ?>" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Datum registrace:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->date_created) /* line 47 */ ?>" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Email:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->user_email) /* line 51 */ ?>" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Přihlašovací jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->user_name) /* line 55 */ ?>" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Role:</label>
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($currentUser->role) /* line 59 */ ?>" disabled="" type="text">
+									</div>
 									</p>
 								</div>
 							</div>
@@ -109,13 +103,6 @@ class Template614b415246 extends Latte\Runtime\Template
 	</div>
 	</body>
 </hmtl>
-<?php
-	}
-
-
-	function blockScripts($_args)
-	{
-?>	<script src="https://files.nette.org/sandbox/jush.js"></script>
 <?php
 	}
 

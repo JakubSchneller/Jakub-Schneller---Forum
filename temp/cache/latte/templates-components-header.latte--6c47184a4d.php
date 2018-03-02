@@ -7,13 +7,11 @@ class Template6c47184a4d extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
-		'scripts' => 'blockScripts',
 		'head' => 'blockHead',
 	];
 
 	public $blockTypes = [
 		'content' => 'html',
-		'scripts' => 'html',
 		'head' => 'html',
 	];
 
@@ -23,10 +21,6 @@ class Template6c47184a4d extends Latte\Runtime\Template
 		extract($this->params);
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
-?>
-
-<?php
-		$this->renderBlock('scripts', get_defined_vars());
 ?>
 
 
@@ -49,6 +43,9 @@ class Template6c47184a4d extends Latte\Runtime\Template
 		extract($_args);
 ?>
 	<style>
+		#bs-example-navbar-collapse-1.collapse.navbar-collapse{
+			background-color: black;
+		}
 		.bs-dark.navbar-inverse {
 			background-color: #222;
 			border-color: #080808;
@@ -80,6 +77,7 @@ class Template6c47184a4d extends Latte\Runtime\Template
 			color: rgba(255,255,255,0.70);
 			text-decoration: none;
 			background-color: transparent;
+			background-image: none;
 		}
 		.bs-dark .dropdown-menu > .active > a,
 		.bs-dark .dropdown-menu > .active > a:hover,
@@ -87,6 +85,7 @@ class Template6c47184a4d extends Latte\Runtime\Template
 			color: rgba(255,255,255,0.70);
 			text-decoration: none;
 			background-color: transparent;
+			background-image: none;
 			outline: 0;
 		}
 
@@ -142,7 +141,6 @@ class Template6c47184a4d extends Latte\Runtime\Template
 			}
 
 		}
-
 	</style>
 	<!------------- Navbar -------------->
 	<nav class="navbar navbar-inverse bs-dark">
@@ -171,34 +169,34 @@ class Template6c47184a4d extends Latte\Runtime\Template
 <?php
 		if ($user->isLoggedIn()) {
 ?>
-				<li class="dropdown">
-					<a class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="<?php
+					<li class="dropdown">
+						<a class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="<?php
 			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:profile")) ?>">
-						Přihlášen jako: <?php echo LR\Filters::escapeHtmlText($loggedin_name) /* line 125 */ ?>
+							Přihlášen jako: <?php echo LR\Filters::escapeHtmlText($loggedin_name) /* line 129 */ ?>
 
-						<img src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($loggedin_image)) /* line 126 */ ?>" class="img-circle" alt="Profile Image">
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:profile")) ?>">Můj profil</a></li>
-						<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:myposts")) ?>">Moje příspěvky</a></li>
+							<img src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($loggedin_image)) /* line 130 */ ?>" class="img-circle" alt="Profile Image">
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:profile")) ?>">Můj profil</a></li>
+							<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:myposts")) ?>">Moje příspěvky</a></li>
 <?php
 			if ($loggedin_role == 'owner' || $loggedin_role == 'admin') {
 ?>
-							<li role="separator" class="divider"></li>
-							<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:admin")) ?>">Spravovat uživatele</a></li>
-						<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlášení</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:admin")) ?>">Spravovat uživatele</a></li>
+								<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlášení</a></li>
 <?php
 			}
 			else {
 ?>
-						<li role="separator" class="divider"></li>
-						<li><a>Nahlásit chybu/zneužití</a></li>
-						<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlášení</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a>Nahlásit chybu/zneužití</a></li>
+								<li><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:out")) ?>">Odhlášení</a></li>
 <?php
 			}
 ?>
-					</ul>
-				</li>
+						</ul>
+					</li>
 <?php
 		}
 		else {
@@ -211,13 +209,6 @@ class Template6c47184a4d extends Latte\Runtime\Template
 		</div>
 	</nav>
 
-<?php
-	}
-
-
-	function blockScripts($_args)
-	{
-?>	<script src="https://files.nette.org/sandbox/jush.js"></script>
 <?php
 	}
 

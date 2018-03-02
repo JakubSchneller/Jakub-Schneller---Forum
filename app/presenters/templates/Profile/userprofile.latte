@@ -29,29 +29,37 @@
 								</div>
 								<div class="col-md-12">
 									<h2 align="center">{$users->first_name} {$users->last_name}</h2><br>
+                                    {if $user->isInRole('admin') || $user->isInRole('owner')}
+										<div class="text-center">
+											<a n:href="Profile:editprofile, 'userId' => $users->user_id" type="button" class="btn btn-success" style="margin: auto">Editovat</a>
+										</div>
+									{/if}
 									<p>
-									<div class="col-sm-5 col-xs-6 tital" align="left">Křestní jméno:</div><div class="col-sm-7 col-xs-6" align="right">{$users->first_name}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Křestní jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->first_name}" disabled="" type="text">
+									</div>
 
-									<div class="col-sm-5 col-xs-6 tital" align="left">Příjmení:</div><div class="col-sm-7" align="right">{$users->last_name}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Datum registrace:</div><div class="col-sm-7" align="right">{$users->date_created}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Email:</div><div class="col-sm-7" align="right">{$users->user_email}</div>
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">Přihlašovací jméno:</div><div class="col-sm-7" align="right">{$users->user_name}</div>
-
-									<div class="clearfix"></div>
-									<div class="bot-border"></div>
-
-									<div class="col-sm-5 col-xs-6 tital" align="left">O mě: </div><div class="col-sm-7" align="right">{$users->about_me}</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Příjmení:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->last_name}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Datum registrace:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->date_created}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Email:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->user_email}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Přihlašovací jméno:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->user_name}" disabled="" type="text">
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="disabledInput">Role:</label>
+										<input class="form-control" id="disabledInput" placeholder="{$users->role}" disabled="" type="text">
+									</div>
 									</p>
 								</div>
 							</div>
@@ -65,7 +73,4 @@
     {/if}
 	</body>
 </hmtl>
-{/block}
-{block scripts}
-	<script src="https://files.nette.org/sandbox/jush.js"></script>
 {/block}

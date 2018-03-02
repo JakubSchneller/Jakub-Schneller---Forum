@@ -350,8 +350,7 @@ class Container_dc08bd2b06 extends Nette\DI\Container
 
 	public function createServiceApplication__6(): App\Presenters\ProfilePresenter
 	{
-		$service = new App\Presenters\ProfilePresenter($this->getService('database.default.context'),
-			$this->getService('security.user'));
+		$service = new App\Presenters\ProfilePresenter($this->getService('database.default.context'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'),
 			$this->getService('routing.router'), $this->getService('http.request'),
 			$this->getService('http.response'), $this->getService('session.session'),

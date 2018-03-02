@@ -7,12 +7,10 @@ class Template468a623e48 extends Latte\Runtime\Template
 {
 	public $blocks = [
 		'content' => 'blockContent',
-		'scripts' => 'blockScripts',
 	];
 
 	public $blockTypes = [
 		'content' => 'html',
-		'scripts' => 'html',
 	];
 
 
@@ -21,7 +19,6 @@ class Template468a623e48 extends Latte\Runtime\Template
 		extract($this->params);
 		if ($this->getParentName()) return get_defined_vars();
 		$this->renderBlock('content', get_defined_vars());
-		$this->renderBlock('scripts', get_defined_vars());
 		return get_defined_vars();
 	}
 
@@ -117,13 +114,6 @@ class Template468a623e48 extends Latte\Runtime\Template
 </div>
 </body>
 
-<?php
-	}
-
-
-	function blockScripts($_args)
-	{
-?>    <script src="https://files.nette.org/sandbox/jush.js"></script>
 <?php
 	}
 

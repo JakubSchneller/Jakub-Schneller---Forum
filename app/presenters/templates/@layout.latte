@@ -13,23 +13,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{$basePath}/css/style.css">
 	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap.css">
-    {block head}{/block}
+	<link rel="stylesheet" href="{$basePath}/bootstrap/css/bootstrap-theme.css">
+
+	<style>
+		html {
+			position: relative;
+			min-height: 100%;
+		}
+		body {
+			margin-bottom: 90px;
+		}
+		.footer {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 90px;
+			width: 100%;
+			background-color: #222222;
+			color: white;
+		}
+		.bs-dark .dropdown-menu > li > a:hover {
+			background-color: black;
+		}
+		@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+	</style>
+
 </head>
-
 <body>
-
-{include "components/header.latte"}
-{include "components/footer.latte"}
+<header>
+    {include "components/header.latte"}
+</header>
 
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 {include content}
 
+<footer>
+    {include "components/footer.latte"}
+</footer>
 {block scripts}
-	<script src="{$basePath}/bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="http://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
 	<script src="{$basePath}/bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
 {/block}
 </body>
 </html>
