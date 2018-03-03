@@ -59,7 +59,8 @@ class PostPresenter extends BasePresenter
             'topic_id'=>$this->getParameter('topicId'),
             'post_date'=>new DateTime,
             'post_creator'=>$this->getUser()->getIdentity()->user_name,
-            'post_creator_id'=>$this->getUser()->getIdentity()->user_id
+            'post_creator_id'=>$this->getUser()->getIdentity()->user_id,
+            'post_creator_role' => $this->getUser()->getIdentity()->role
         ]);
 
         $this->flashMessage('Článek byl úspěšně přidán.');

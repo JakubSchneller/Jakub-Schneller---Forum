@@ -40,7 +40,17 @@ class Template091ccd16ad extends Latte\Runtime\Template
 
 <hmtl>
 	<head>
-
+		<style>
+			.media-object-owner {
+				border: 3px solid rgb(41, 5, 250);
+			}
+			.media-object-admin {
+				border: 3px solid red;
+			}
+			.media-object-user {
+				border: 3px solid rgba(0, 0, 0, 0.46);
+			}
+		</style>
 	</head>
 	<body>
 <?php
@@ -57,13 +67,42 @@ class Template091ccd16ad extends Latte\Runtime\Template
 								<div class="col-md-12">
 									<div align="center">
 										<a class="" href="#">
-											<img class="media-object dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 26 */ ?>" style="width: 180px;height:180px;">
+<?php
+			if ($users->role == 'owner') {
+				?>												<img class="media-object-owner dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 37 */ ?>" style="width: 180px;height:180px;">
+<?php
+			}
+			elseif ($users->role == 'admin') {
+				?>												<img class="media-object-admin dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 39 */ ?>" style="width: 180px;height:180px;">
+<?php
+			}
+			else {
+				?>												<img class="media-object-user dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 41 */ ?>" style="width: 180px;height:180px;">
+<?php
+			}
+?>
 										</a>
 									</div>
 								</div>
 								<div class="col-md-12">
-									<h2 align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 31 */ ?> <?php
-			echo LR\Filters::escapeHtmlText($users->last_name) /* line 31 */ ?></h2><br>
+<?php
+			if ($users->role == 'owner') {
+				?>										<h2 style="color: rgb(41, 5, 250)" align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 48 */ ?> <?php
+				echo LR\Filters::escapeHtmlText($users->last_name) /* line 48 */ ?></h2>
+<?php
+			}
+			elseif ($users->role == 'admin') {
+				?>										<h2 style="color: red" align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 50 */ ?> <?php
+				echo LR\Filters::escapeHtmlText($users->last_name) /* line 50 */ ?></h2>
+<?php
+			}
+			else {
+				?>										<h2 style="color: #555555" align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 52 */ ?> <?php
+				echo LR\Filters::escapeHtmlText($users->last_name) /* line 52 */ ?></h2>
+<?php
+			}
+?>
+									<br>
 <?php
 			if ($user->isInRole('admin') || $user->isInRole('owner')) {
 ?>
@@ -76,28 +115,28 @@ class Template091ccd16ad extends Latte\Runtime\Template
 									<p>
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Křestní jméno:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->first_name) /* line 40 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->first_name) /* line 63 */ ?>" disabled="" type="text">
 									</div>
 
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Příjmení:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->last_name) /* line 45 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->last_name) /* line 68 */ ?>" disabled="" type="text">
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Datum registrace:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->date_created) /* line 49 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->date_created) /* line 72 */ ?>" disabled="" type="text">
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Email:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->user_email) /* line 53 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->user_email) /* line 76 */ ?>" disabled="" type="text">
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Přihlašovací jméno:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->user_name) /* line 57 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->user_name) /* line 80 */ ?>" disabled="" type="text">
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="disabledInput">Role:</label>
-										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->role) /* line 61 */ ?>" disabled="" type="text">
+										<input class="form-control" id="disabledInput" placeholder="<?php echo LR\Filters::escapeHtmlAttr($users->role) /* line 84 */ ?>" disabled="" type="text">
 									</div>
 									</p>
 								</div>

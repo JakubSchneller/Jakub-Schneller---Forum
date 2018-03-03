@@ -70,7 +70,14 @@
         {else}
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
         {/if}
-        <td class="hidden-xs hidden-sm"><a n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$post->post_date}</small></td>
+
+            {if $post->post_creator_role == owner}
+                <td class="hidden-xs hidden-sm"><a style="color: rgb(41, 5, 250)" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$post->post_date}</small></td>
+            {elseif $post->post_creator_role == admin}
+                <td class="hidden-xs hidden-sm"><a style="color: red" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$post->post_date}</small></td>
+            {else}
+                <td class="hidden-xs hidden-sm"><a style="color: #555555" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$post->post_date}</small></td>
+            {/if}
         </tr>
     {/foreach}
     </tbody>

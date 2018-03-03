@@ -120,9 +120,28 @@ class Template468a623e48 extends Latte\Runtime\Template
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
 <?php
 			}
-			?>        <td class="hidden-xs hidden-sm"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
-			echo LR\Filters::escapeHtmlText($post->post_creator) /* line 73 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
-			echo LR\Filters::escapeHtmlText($post->post_date) /* line 73 */ ?></small></td>
+?>
+
+<?php
+			if ($post->post_creator_role == 'owner') {
+				?>                <td class="hidden-xs hidden-sm"><a style="color: rgb(41, 5, 250)" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
+				echo LR\Filters::escapeHtmlText($post->post_creator) /* line 75 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
+				echo LR\Filters::escapeHtmlText($post->post_date) /* line 75 */ ?></small></td>
+<?php
+			}
+			elseif ($post->post_creator_role == 'admin') {
+				?>                <td class="hidden-xs hidden-sm"><a style="color: red" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
+				echo LR\Filters::escapeHtmlText($post->post_creator) /* line 77 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
+				echo LR\Filters::escapeHtmlText($post->post_date) /* line 77 */ ?></small></td>
+<?php
+			}
+			else {
+				?>                <td class="hidden-xs hidden-sm"><a style="color: #555555" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
+				echo LR\Filters::escapeHtmlText($post->post_creator) /* line 79 */ ?></a><br><small><i class="fa fa-clock-o"></i><?php
+				echo LR\Filters::escapeHtmlText($post->post_date) /* line 79 */ ?></small></td>
+<?php
+			}
+?>
         </tr>
 <?php
 			$iterations++;

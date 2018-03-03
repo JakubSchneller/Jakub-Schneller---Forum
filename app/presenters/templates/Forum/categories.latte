@@ -60,7 +60,14 @@
                         {if $topic['lastPost']}
                             <td class="hidden-xs hidden-sm">
                                 <a n:href="Forum:post, 'postId' => $topic['lastPost']->post_id">{$topic['lastPost']->post_name}</a>
-                                <br><small>Vytvořil <a n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a>{$topic['ageText']}</small></td>
+                                <br>
+                                {if $topic['lastPost']->post_creator_role == owner}
+                                    <small>Vytvořil <a style="color: rgb(41, 5, 250)" n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a>{$topic['ageText']}</small></td>
+                                {elseif $topic['lastPost']->post_creator_role == admin}
+                                    <small>Vytvořil <a style="color: red" n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a>{$topic['ageText']}</small></td>
+                                {else}
+                                    <small>Vytvořil <a style="color: #555555" n:href="Profile:userprofile, 'userId' => $topic['lastPost']->post_creator_id">{$topic['lastPost']->post_creator}</a>{$topic['ageText']}</small></td>
+                                {/if}
                         {else}
                             <td class="hidden-xs hidden-sm"><br><small><i class="fa fa-clock-o"></i></small></td>
                         {/if}

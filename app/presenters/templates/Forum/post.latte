@@ -52,27 +52,22 @@
     <div class="container">
 
         <div class="row">
-
-            <!-- Post Content Column -->
             <div class="col-lg-12">
-                <!-- Title -->
                 <h1 class="mt-4">{$post->post_name}</h1>
-
-                <!-- Author -->
                 <p class="lead">
                     {$post->post_description}
                     <br>
                 </p>
-
                 <hr>
-
-                <!-- Date/Time -->
                 <p><strong>Vytvořil/a
-                        <a n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a> {$post->post_date}</p></strong>
-
+                {if $post->post_creator_role == owner}
+                <a style="color: rgb(41, 5, 250)" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a> {$post->post_date}</p></strong>
+                {elseif $post->post_creator_role == admin}
+                <a style="color: red" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a> {$post->post_date}</p></strong>
+                {else}
+                <a style="color: #555555" n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a> {$post->post_date}</p></strong>
+                {/if}
                 <hr>
-
-                <!-- Post Content -->
                 <font size="4">{$post->post_content}</font>
                 <br>
                 <br>

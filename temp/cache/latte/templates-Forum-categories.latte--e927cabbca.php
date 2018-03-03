@@ -108,9 +108,24 @@ class Templatee927cabbca extends Latte\Runtime\Template
                             <td class="hidden-xs hidden-sm">
                                 <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Forum:post", ['postId' => $topic['lastPost']->post_id])) ?>"><?php
 					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_name) /* line 62 */ ?></a>
-                                <br><small>Vytvořil <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
-					echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 63 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 63 */ ?></small></td>
+                                <br>
 <?php
+					if ($topic['lastPost']->post_creator_role == 'owner') {
+						?>                                    <small>Vytvořil <a style="color: rgb(41, 5, 250)" href="<?php
+						echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+						echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 65 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 65 */ ?></small></td>
+<?php
+					}
+					elseif ($topic['lastPost']->post_creator_role == 'admin') {
+						?>                                    <small>Vytvořil <a style="color: red" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+						echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 67 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 67 */ ?></small></td>
+<?php
+					}
+					else {
+						?>                                    <small>Vytvořil <a style="color: #555555" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $topic['lastPost']->post_creator_id])) ?>"><?php
+						echo LR\Filters::escapeHtmlText($topic['lastPost']->post_creator) /* line 69 */ ?></a><?php echo LR\Filters::escapeHtmlText($topic['ageText']) /* line 69 */ ?></small></td>
+<?php
+					}
 				}
 				else {
 ?>
