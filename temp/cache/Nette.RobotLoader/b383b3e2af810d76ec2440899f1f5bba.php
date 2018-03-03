@@ -47,11 +47,6 @@ return array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/ErrorPresenter.php',
       'time' => 1504886050,
     ),
-    'App\\Presenters\\ForumPresenter' => 
-    array (
-      'file' => '/Applications/MAMP/htdocs/test/app/presenters/ForumPresenter.php',
-      'time' => 1518970222,
-    ),
     'App\\Presenters\\HomepagePresenter' => 
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/presenters/HomepagePresenter.php',
@@ -81,6 +76,11 @@ return array (
     array (
       'file' => '/Applications/MAMP/htdocs/test/app/router/RouterFactory.php',
       'time' => 1504886050,
+    ),
+    'App\\Presenters\\ForumPresenter' => 
+    array (
+      'file' => '/Applications/MAMP/htdocs/test/app/presenters/ForumPresenter.php',
+      'time' => 1520096126,
     ),
   ),
   1 => 

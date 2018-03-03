@@ -170,6 +170,7 @@ class ForumPresenter extends BasePresenter
             'content' => $values->content,
             'date_created' => new DateTime(),
             'creator_name' => $this->getUser()->getIdentity()->user_name,
+            'role' => $this->getUser()->getIdentity()->role,
             'creator_id'   => $this->getUser()->getIdentity()->user_id,
             'creator_image' => $this->getUser()->getIdentity()->image
         ]);
@@ -213,6 +214,17 @@ class ForumPresenter extends BasePresenter
             $this->redirect("Homepage:default");
         }
 
+    }
+    public function handleDeletePost($postId)
+    {
+        $this->database->table('posts')->get($postId)->delete();
+        $this->database->table('comments')->where("post_id", $postId)->delete();
+        $this->flashMessage('Příspěvek byl úspěšně smazán');
+    }
+    public function handleDeleteComment($commentId)
+    {
+        $this->database->table('comments')->get($commentId)->delete();
+        $this->flashMessage('Komentář byl úspěšně smazán');
     }
 
 

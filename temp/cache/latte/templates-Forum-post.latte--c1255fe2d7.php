@@ -26,7 +26,7 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['comment'])) trigger_error('Variable $comment overwritten in foreach on line 81');
+		if (isset($this->params['comment'])) trigger_error('Variable $comment overwritten in foreach on line 92');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -49,7 +49,18 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
                 font-weight: bold;
                 margin: 8px auto 8px;
             }
-            .media .media-object { max-width: 100px; }
+            .media .media-object-owner {
+                max-width: 100px;
+                border: 3px solid rgb(41, 5, 250);
+            }
+            .media .media-object-admin {
+                max-width: 100px;
+                border: 3px solid red;
+            }
+            .media .media-object-user {
+                max-width: 100px;
+                border: 3px solid rgba(0, 0, 0, 0.46);
+            }
             .media-body { position: relative; }
             .media-date {
                 position: absolute;
@@ -82,11 +93,11 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
             <!-- Post Content Column -->
             <div class="col-lg-12">
                 <!-- Title -->
-                <h1 class="mt-4"><?php echo LR\Filters::escapeHtmlText($post->post_name) /* line 48 */ ?></h1>
+                <h1 class="mt-4"><?php echo LR\Filters::escapeHtmlText($post->post_name) /* line 59 */ ?></h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    <?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 52 */ ?>
+                    <?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 63 */ ?>
 
                     <br>
                 </p>
@@ -96,12 +107,12 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
                 <!-- Date/Time -->
                 <p><strong>Vytvořil/a
                         <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
-		echo LR\Filters::escapeHtmlText($post->post_creator) /* line 60 */ ?></a> <?php echo LR\Filters::escapeHtmlText($post->post_date) /* line 60 */ ?></p></strong>
+		echo LR\Filters::escapeHtmlText($post->post_creator) /* line 71 */ ?></a> <?php echo LR\Filters::escapeHtmlText($post->post_date) /* line 71 */ ?></p></strong>
 
                 <hr>
 
                 <!-- Post Content -->
-                <font size="4"><?php echo LR\Filters::escapeHtmlText($post->post_content) /* line 65 */ ?></font>
+                <font size="4"><?php echo LR\Filters::escapeHtmlText($post->post_content) /* line 76 */ ?></font>
                 <br>
                 <br>
                 <br>
@@ -122,19 +133,97 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
 		foreach ($comments as $comment) {
 ?>
                                     <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 84 */ ?>" alt="profile">
-                                        </a>
+                                        <div class="pull-left">
+<?php
+			if ($comment['dbrow']->role == 'owner') {
+				?>                                            <img class="media-object-owner img-circle" src="../<?php
+				echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 96 */ ?>" alt="profile">
+<?php
+			}
+			elseif ($comment['dbrow']->role == 'admin') {
+				?>                                            <img class="media-object-admin img-circle" src="../<?php
+				echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 98 */ ?>" alt="profile">
+<?php
+			}
+			else {
+				?>                                            <img class="media-object-user img-circle" src="../<?php
+				echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 100 */ ?>" alt="profile">
+<?php
+			}
+?>
+                                            <div style="text-align: center">
+<?php
+			if ($comment['dbrow']->role == 'owner') {
+				?>                                                    <a style="color: rgb(41, 5, 250); text-transform: uppercase;"><?php
+				echo LR\Filters::escapeHtmlText($comment['dbrow']->role) /* line 104 */ ?></a>
+<?php
+			}
+			elseif ($comment['dbrow']->role == 'admin') {
+				?>                                                    <a style="color: red; text-transform: uppercase;"><?php
+				echo LR\Filters::escapeHtmlText($comment['dbrow']->role) /* line 106 */ ?></a>
+<?php
+			}
+			else {
+				?>                                                    <a style="color: #555555; text-transform: uppercase;"><?php
+				echo LR\Filters::escapeHtmlText($comment['dbrow']->role) /* line 108 */ ?></a>
+<?php
+			}
+?>
+                                            </div>
+                                        </div>
                                         <div class="media-body">
                                             <div class="well well-lg">
-                                                <h4 class="text-uppercase reviews"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
-			echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 88 */ ?></h4>
+<?php
+			if ($user->isInRole('admin') || $user->isInRole('owner')) {
+				if ($comment['dbrow']->role == 'owner') {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: rgb(41, 5, 250)" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 116 */ ?></a>
+<?php
+				}
+				elseif ($comment['dbrow']->role == 'admin') {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: red" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 118 */ ?></a>
+<?php
+				}
+				else {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: #555555" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 120 */ ?></a>
+<?php
+				}
+				?>                                                    <a onClick="return confirm('Opravdu smazat komentář?');" type="button" class="btn-remove btn btn-danger btn-xs" href="<?php
+				echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("deleteComment!", ['commentId' => $comment['dbrow']->id])) ?>"><span class="glyphicon glyphicon-remove"></span></a></h5>
+<?php
+			}
+			else {
+				if ($comment['dbrow']->role == 'owner') {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: rgb(41, 5, 250)" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 125 */ ?></a></h5>
+<?php
+				}
+				elseif ($comment['dbrow']->role == 'admin') {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: red" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 127 */ ?></a></h5>
+<?php
+				}
+				else {
+					?>                                                        <h5 class="text-uppercase reviews"><a style="color: #555555" href="<?php
+					echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+					echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 129 */ ?></a></h5>
+<?php
+				}
+			}
+?>
                                                 <ul class="media-date reviews list-inline">
-                                                    <?php echo LR\Filters::escapeHtmlText($comment['age']) /* line 90 */ ?>
+                                                    <?php echo LR\Filters::escapeHtmlText($comment['age']) /* line 133 */ ?>
 
                                                 </ul>
                                                 <p class="media-comment">
-                                                    <a></a><?php echo LR\Filters::escapeHtmlText($comment['dbrow']->content) /* line 93 */ ?>
+                                                    <a></a><?php echo LR\Filters::escapeHtmlText($comment['dbrow']->content) /* line 136 */ ?>
 
                                                 </p>
                                             </div>

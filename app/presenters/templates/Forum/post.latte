@@ -12,7 +12,18 @@
                 font-weight: bold;
                 margin: 8px auto 8px;
             }
-            .media .media-object { max-width: 100px; }
+            .media .media-object-owner {
+                max-width: 100px;
+                border: 3px solid rgb(41, 5, 250);
+            }
+            .media .media-object-admin {
+                max-width: 100px;
+                border: 3px solid red;
+            }
+            .media .media-object-user {
+                max-width: 100px;
+                border: 3px solid rgba(0, 0, 0, 0.46);
+            }
             .media-body { position: relative; }
             .media-date {
                 position: absolute;
@@ -80,12 +91,44 @@
                             <ul class="media-list">
                                 {foreach $comments as $comment}
                                     <li class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object img-circle" src="../{$comment['dbrow']->creator_image}" alt="profile">
-                                        </a>
+                                        <div class="pull-left">
+                                            {if $comment['dbrow']->role == owner}
+                                            <img class="media-object-owner img-circle" src="../{$comment['dbrow']->creator_image}" alt="profile">
+                                            {elseif $comment['dbrow']->role == admin}
+                                            <img class="media-object-admin img-circle" src="../{$comment['dbrow']->creator_image}" alt="profile">
+                                            {else}
+                                            <img class="media-object-user img-circle" src="../{$comment['dbrow']->creator_image}" alt="profile">
+                                            {/if}
+                                            <div style="text-align: center">
+                                                {if $comment['dbrow']->role == owner}
+                                                    <a style="color: rgb(41, 5, 250); text-transform: uppercase;">{$comment['dbrow']->role}</a>
+                                                {elseif $comment['dbrow']->role == admin}
+                                                    <a style="color: red; text-transform: uppercase;">{$comment['dbrow']->role}</a>
+                                                {else}
+                                                    <a style="color: #555555; text-transform: uppercase;">{$comment['dbrow']->role}</a>
+                                                {/if}
+                                            </div>
+                                        </div>
                                         <div class="media-body">
                                             <div class="well well-lg">
-                                                <h4 class="text-uppercase reviews"><a n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</h4>
+                                                {if $user->isInRole('admin') || $user->isInRole('owner')}
+                                                    {if $comment['dbrow']->role == owner}
+                                                        <h5 class="text-uppercase reviews"><a style="color: rgb(41, 5, 250)" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a>
+                                                    {elseif $comment['dbrow']->role == admin}
+                                                        <h5 class="text-uppercase reviews"><a style="color: red" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a>
+                                                    {else}
+                                                        <h5 class="text-uppercase reviews"><a style="color: #555555" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a>
+                                                    {/if}
+                                                    <a n:href="deleteComment!, 'commentId' => $comment['dbrow']->id" onClick="return confirm('Opravdu smazat komentář?');" type="button" class="btn-remove btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a></h5>
+                                                {else}
+                                                    {if $comment['dbrow']->role == owner}
+                                                        <h5 class="text-uppercase reviews"><a style="color: rgb(41, 5, 250)" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a></h5>
+                                                    {elseif $comment['dbrow']->role == admin}
+                                                        <h5 class="text-uppercase reviews"><a style="color: red" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a></h5>
+                                                    {else}
+                                                        <h5 class="text-uppercase reviews"><a style="color: #555555" n:href="Profile:userprofile, 'userId' => $comment['dbrow']->creator_id">{$comment['dbrow']->creator_name}</a></h5>
+                                                    {/if}
+                                                {/if}
                                                 <ul class="media-date reviews list-inline">
                                                     {$comment['age']}
                                                 </ul>

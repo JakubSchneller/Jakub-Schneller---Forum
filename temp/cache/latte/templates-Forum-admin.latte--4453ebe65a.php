@@ -159,20 +159,17 @@ class Template4453ebe65a extends Latte\Runtime\Template
 		$iterations = 0;
 		foreach ($accounts['registered'] as $registered) {
 ?>
-
-
         <tbody>
-
         <tr>
             <td class="text-center"><i class="  fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $registered->user_id])) ?>"><?php
-			echo LR\Filters::escapeHtmlText($registered->user_name) /* line 112 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($registered->first_name) /* line 112 */ ?>
+			echo LR\Filters::escapeHtmlText($registered->user_name) /* line 109 */ ?></a><br><small><?php echo LR\Filters::escapeHtmlText($registered->first_name) /* line 109 */ ?>
 
-                        <a> </a><?php echo LR\Filters::escapeHtmlText($registered->last_name) /* line 113 */ ?></small></h4>
+                <a> </a><?php echo LR\Filters::escapeHtmlText($registered->last_name) /* line 110 */ ?></small></h4>
             </td>
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
-            <td style="text-align: center" class="hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($registered->role) /* line 116 */ ?></td>
+            <td style="text-align: center" class="hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($registered->role) /* line 113 */ ?></td>
             <td class="text-center hidden-xs hidden-sm">
                 <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $registered->user_id])) ?>"><span class="glyphicon glyphicon-user"></span></a>
             </td>

@@ -47,7 +47,11 @@
             <h3>{$topic->topic_name}</h3>
         </th>
         <th class="cell-stat text-center hidden-xs hidden-sm"></th>
-        <th class="cell-stat text-center hidden-xs hidden-sm"></th>
+        {if $user->isInRole('admin') || $user->isInRole('owner')}
+            <th class="cell-stat-2x text-center hidden-xs hidden-sm">Smazat příspěvek</th>
+        {else}
+            <th class="cell-stat-2x text-center hidden-xs hidden-sm"></th>
+        {/if}
         <th class="cell-stat-2x hidden-xs hidden-sm">Vytvořil</th>
     </tr>
     </thead>
@@ -61,7 +65,11 @@
             <h4><a n:href="Forum:post, 'postId' => $post->post_id">{$post->post_name}</a><br><small>{$post->post_description}</small></h4>
         </td>
         <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
-        <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
+        {if $user->isInRole('admin') || $user->isInRole('owner')}
+            <td class="text-center hidden-xs hidden-sm"><a n:href="deletePost!, 'postId' => $post->post_id" onClick="return confirm('Opravdu smazat?');" type="button" class="btn-remove btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>
+        {else}
+            <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
+        {/if}
         <td class="hidden-xs hidden-sm"><a n:href="Profile:userprofile, 'userId' => $post->post_creator_id">{$post->post_creator}</a><br><small><i class="fa fa-clock-o"></i>{$post->post_date}</small></td>
         </tr>
     {/foreach}

@@ -102,15 +102,12 @@
     </tr>
     </thead>
 {foreach $accounts['registered'] as $registered}
-
-
         <tbody>
-
         <tr>
             <td class="text-center"><i class="  fa fa-question fa-2x text-primary"></i></td>
             <td>
                 <h4><a n:href="Profile:userprofile, 'userId' => $registered->user_id">{$registered->user_name}</a><br><small>{$registered->first_name}
-                        <a> </a>{$registered->last_name}</small></h4>
+                <a> </a>{$registered->last_name}</small></h4>
             </td>
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
             <td style="text-align: center" class="hidden-xs hidden-sm">{$registered->role}</td>
