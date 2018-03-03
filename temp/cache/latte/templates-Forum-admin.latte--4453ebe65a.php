@@ -93,7 +93,7 @@ class Template4453ebe65a extends Latte\Runtime\Template
         <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
         <td style="text-align: center" class="hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($owner->role) /* line 51 */ ?></td>
         <td class="text-center hidden-xs hidden-sm">
-        <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $owner->user_id])) ?>"><span class="glyphicon glyphicon-minus"></span></a>
+        <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $owner->user_id])) ?>"><span class="glyphicon glyphicon-user"></span></a>
         </td>
         </tr>
     </tbody>
@@ -132,7 +132,7 @@ class Template4453ebe65a extends Latte\Runtime\Template
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
             <td style="text-align: center" class="hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($admin->role) /* line 82 */ ?></td>
             <td class="text-center hidden-xs hidden-sm">
-                <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $admin->user_id])) ?>"><span class="glyphicon glyphicon-minus"></span></a>
+                <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $admin->user_id])) ?>"><span class="glyphicon glyphicon-user"></span></a>
             </td>
         </tr>
 
@@ -174,7 +174,7 @@ class Template4453ebe65a extends Latte\Runtime\Template
             <td class="text-center hidden-xs hidden-sm"><a href="#"></a></td>
             <td style="text-align: center" class="hidden-xs hidden-sm"><?php echo LR\Filters::escapeHtmlText($registered->role) /* line 116 */ ?></td>
             <td class="text-center hidden-xs hidden-sm">
-                <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $registered->user_id])) ?>"><span class="glyphicon glyphicon-minus"></span></a>
+                <a type="button" class="btn-remove btn btn-danger btn-xs" href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:editprofile", ['userId' => $registered->user_id])) ?>"><span class="glyphicon glyphicon-user"></span></a>
             </td>
         </tr>
 

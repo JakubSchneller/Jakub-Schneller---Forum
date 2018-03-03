@@ -34,16 +34,6 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 	function blockContent($_args)
 	{
 		extract($_args);
-?>
-
-<!DOCTYPE html>
-
-<hmtl>
-	<head>
-
-	</head>
-	<body>
-<?php
 		if ($userId == $users->user_id) {
 ?>
 	<div class="container-fluid">
@@ -57,13 +47,13 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 								<div class="col-md-12">
 									<div align="center">
 										<a class="" href="#">
-											<img class="media-object dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 26 */ ?>" style="width: 180px;height:180px;">
+											<img class="media-object dp img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($users->image)) /* line 18 */ ?>" style="width: 180px;height:180px;">
 										</a>
 									</div>
 								</div>
 								<div class="col-md-12 text-left">
-									<h2 align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 31 */ ?> <?php
-			echo LR\Filters::escapeHtmlText($users->last_name) /* line 31 */ ?></h2><br>
+									<h2 align="center"><?php echo LR\Filters::escapeHtmlText($users->first_name) /* line 23 */ ?> <?php
+			echo LR\Filters::escapeHtmlText($users->last_name) /* line 23 */ ?></h2><br>
 									<p>
 <?php
 			$form = $_form = $this->global->formsStack[] = $this->global->uiControl["editUserForm"];
@@ -72,7 +62,7 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 			), false) ?>>
 									<div class="form-group">
 										<label class="control-label" for="inputDefault">Křestní jméno:</label>
-										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->first_name) /* line 36 */ ?>" class="form-control" id="InputDefault"  type="text"<?php
+										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->first_name) /* line 28 */ ?>" class="form-control" id="InputDefault"  type="text"<?php
 			$_input = end($this->global->formsStack)["firstname"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'value' => NULL,
@@ -84,7 +74,7 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 
 									<div class="form-group">
 										<label class="control-label" for="inputDefault">Příjmení:</label>
-										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->last_name) /* line 41 */ ?>"class="form-control" id="inputDefault"  type="text"<?php
+										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->last_name) /* line 33 */ ?>"class="form-control" id="inputDefault"  type="text"<?php
 			$_input = end($this->global->formsStack)["lastname"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'value' => NULL,
@@ -95,7 +85,7 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="inputDefault">Email:</label>
-										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->user_email) /* line 45 */ ?>" class="form-control" id="inputDefault" type="text"<?php
+										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->user_email) /* line 37 */ ?>" class="form-control" id="inputDefault" type="text"<?php
 			$_input = end($this->global->formsStack)["email"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'value' => NULL,
@@ -106,7 +96,7 @@ class Template1dbcbc4459 extends Latte\Runtime\Template
 									</div>
 									<div class="form-group">
 										<label class="control-label" for="inputDefault">Přihlašovací jméno:</label>
-										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->user_name) /* line 49 */ ?>" class="form-control" id="inputDefault" type="text"<?php
+										<input value="<?php echo LR\Filters::escapeHtmlAttr($users->user_name) /* line 41 */ ?>" class="form-control" id="inputDefault" type="text"<?php
 			$_input = end($this->global->formsStack)["username"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'value' => NULL,

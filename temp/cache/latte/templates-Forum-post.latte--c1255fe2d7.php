@@ -26,7 +26,7 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
 	function prepare()
 	{
 		extract($this->params);
-		if (isset($this->params['comment'])) trigger_error('Variable $comment overwritten in foreach on line 93');
+		if (isset($this->params['comment'])) trigger_error('Variable $comment overwritten in foreach on line 81');
 		Nette\Bridges\ApplicationLatte\UIRuntime::initialize($this, $this->parentName, $this->blocks);
 		
 	}
@@ -36,15 +36,14 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
 	{
 		extract($_args);
 ?>
-
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Blog post</title>
-
-
         <style>
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            body {
+                margin-bottom: 10%;
+            }
             .reviews {
                 color: #555;
                 font-weight: bold;
@@ -68,20 +67,14 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
             .btn-circle span { padding-right: 6px; }
             .tab-content {
                 padding: 50px 15px 0px;
+                padding-bottom: 50px;
                 border: 1px solid #ddd;
                 border-top: 0;
                 border-bottom-right-radius: 4px;
                 border-bottom-left-radius: 4px;
             }
             .custom-input-file:hover .uploadPhoto { display: block; }
-            .addcomment{
-                padding-top: 10px;
-                text-align: center;
-            }
         </style>
-    </head>
-    <body>
-    <!-- Page Content -->
     <div class="container">
 
         <div class="row">
@@ -89,11 +82,11 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
             <!-- Post Content Column -->
             <div class="col-lg-12">
                 <!-- Title -->
-                <h1 class="mt-4"><?php echo LR\Filters::escapeHtmlText($post->post_name) /* line 59 */ ?></h1>
+                <h1 class="mt-4"><?php echo LR\Filters::escapeHtmlText($post->post_name) /* line 48 */ ?></h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    <?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 63 */ ?>
+                    <?php echo LR\Filters::escapeHtmlText($post->post_description) /* line 52 */ ?>
 
                     <br>
                 </p>
@@ -103,104 +96,101 @@ class Templatec1255fe2d7 extends Latte\Runtime\Template
                 <!-- Date/Time -->
                 <p><strong>Vytvořil/a
                         <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $post->post_creator_id])) ?>"><?php
-		echo LR\Filters::escapeHtmlText($post->post_creator) /* line 71 */ ?></a> <?php echo LR\Filters::escapeHtmlText($post->post_date) /* line 71 */ ?></p></strong>
+		echo LR\Filters::escapeHtmlText($post->post_creator) /* line 60 */ ?></a> <?php echo LR\Filters::escapeHtmlText($post->post_date) /* line 60 */ ?></p></strong>
 
                 <hr>
 
                 <!-- Post Content -->
-                <font size="4"><?php echo LR\Filters::escapeHtmlText($post->post_content) /* line 76 */ ?></font>
+                <font size="4"><?php echo LR\Filters::escapeHtmlText($post->post_content) /* line 65 */ ?></font>
                 <br>
                 <br>
                 <br>
             </div>
 
                 <!-- Komentáře-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="comment-tabs">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Komentáře</h4></a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="comments-logout">
-                                    <ul class="media-list">
+            <div class="col-lg-12" id="logout">
+                <div class="comment-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Komentáře</h4></a></li>
+                        <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Přidat komentář</h4></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="comments-logout">
+                            <ul class="media-list">
 <?php
 		$iterations = 0;
 		foreach ($comments as $comment) {
 ?>
-                                        <li class="media">
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 96 */ ?>" alt="profile">
-                                            </a>
-                                            <div class="media-body">
-                                                <div class="well well-lg">
-                                                    <h4 class="text-uppercase reviews"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
-			echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 100 */ ?></h4>
-                                                    <ul class="media-date reviews list-inline">
-                                                        <?php echo LR\Filters::escapeHtmlText($comment['age']) /* line 102 */ ?>
+                                    <li class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle" src="../<?php echo LR\Filters::escapeHtmlAttr(LR\Filters::safeUrl($comment['dbrow']->creator_image)) /* line 84 */ ?>" alt="profile">
+                                        </a>
+                                        <div class="media-body">
+                                            <div class="well well-lg">
+                                                <h4 class="text-uppercase reviews"><a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Profile:userprofile", ['userId' => $comment['dbrow']->creator_id])) ?>"><?php
+			echo LR\Filters::escapeHtmlText($comment['dbrow']->creator_name) /* line 88 */ ?></h4>
+                                                <ul class="media-date reviews list-inline">
+                                                    <?php echo LR\Filters::escapeHtmlText($comment['age']) /* line 90 */ ?>
 
-                                                    </ul>
-                                                    <p class="media-comment">
-                                                        <a></a><?php echo LR\Filters::escapeHtmlText($comment['dbrow']->content) /* line 105 */ ?>
+                                                </ul>
+                                                <p class="media-comment">
+                                                    <a></a><?php echo LR\Filters::escapeHtmlText($comment['dbrow']->content) /* line 93 */ ?>
 
-                                                    </p>
-                                                </div>
+                                                </p>
                                             </div>
-                                        </li>
+                                        </div>
+                                    </li>
 <?php
 			$iterations++;
 		}
 ?>
-                                    </ul>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="add-comment">
 <?php
 		if ($user->isLoggedIn()) {
 			$form = $_form = $this->global->formsStack[] = $this->global->uiControl["commenting"];
-			?>                                    <form<?php
+			?>                                <form<?php
 			echo Nette\Bridges\FormsLatte\Runtime::renderFormBegin(end($this->global->formsStack), array (
 			), false) ?>>
-                                    <div class="form-group">
-                                        <h4 class="reviews text-capitalize">Přidat komentář:</h4>
-                                        <textarea class="form-control" rows="5" id="comment"<?php
+                                    <label for="email" class="col-sm-1 control-label">Komentář</label>
+                                    <div class="col-sm-11">
+                                    <textarea class="form-control" rows="5" placeholder="Obsah komentáře"<?php
 			$_input = end($this->global->formsStack)["content"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'class' => NULL,
 			'rows' => NULL,
-			'id' => NULL,
-			))->attributes() ?>><?php echo $_input->getControl()->getHtml() ?></textarea>
-                                        <div class="addcomment">
-                                            <button class="btn btn-success green"<?php
+			'placeholder' => NULL,
+			))->attributes() ?>><?php echo $_input->getControl()->getHtml() ?></textarea><br>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <button class="btn btn-success btn-circle text-uppercase"<?php
 			$_input = end($this->global->formsStack)["submit"];
 			echo $_input->getControlPart()->addAttributes(array (
 			'class' => NULL,
 			))->attributes() ?>><i class="fa fa-share"></i>Zveřejnit</button>
-                                        </div>
 
                                     </div>
 <?php
 			echo Nette\Bridges\FormsLatte\Runtime::renderFormEnd(array_pop($this->global->formsStack), false);
-?>                                    </form>
+?>                                </form>
 <?php
 		}
 		else {
 ?>
-                                        <br>
-                                            <p><strong>Musíš být přihlášen aby si mohl přidat komentář</strong></p>
-                                            <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>">Zaregistruj se zde</a><br><a href="<?php
+                        <div style="text-align: center">
+                            <p><strong>Musíš být přihlášen aby si mohl přidat komentář</strong></p>
+                            <a href="<?php echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:up")) ?>">Zaregistruj se zde</a><br><a href="<?php
 			echo LR\Filters::escapeHtmlAttr($this->global->uiControl->link("Sign:in")) ?>">Přihlaš se zde</a>
+                        </div>
 <?php
 		}
 ?>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
-    </body>
-    </html>
+
 <?php
 	}
 

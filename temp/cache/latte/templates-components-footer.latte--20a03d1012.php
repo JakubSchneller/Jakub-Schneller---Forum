@@ -10,7 +10,6 @@ class Template20a03d1012 extends Latte\Runtime\Template
 	{
 		extract($this->params);
 ?>
-
 <footer class="footer text-center">
 	<div class="copyrights bg-black" style="margin-top: 15px ">
 		<p>Praha © 2017, All Rights Reserved
